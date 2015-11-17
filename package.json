@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "debug": "node-debug --debug-brk=0 ./bin/www/"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -15,5 +16,10 @@
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.3",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "js-beautify": "^1.5.10",
+    "jshint": "^2.8.0",
+    "lint": "^1.1.2"
   }
 }
