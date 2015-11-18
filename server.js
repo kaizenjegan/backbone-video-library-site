@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var video = require('./routes/video');
 var session = require('express-session');
 var passport = require('passport');
 var mongoose = require('mongoose');
@@ -35,7 +36,7 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
-
+app.use('/video', video);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
