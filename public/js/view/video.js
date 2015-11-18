@@ -3,19 +3,18 @@ var app = app || {};
 (function ($) {
 	app.VideoView = Backbone.View.extend({
 		el: '#video-body',
-		template: Handlebars.compile( $( '#video-lib-template').html()),
-		initialize: function()
+		template: Handlebars.compile( $( '#video-show-template').html()),
+		initialize: function(options)
 		{
-			this.listenTo(this.model, 'reset', this.render);
+			this.render(options.videoId);
 		},
-		render: function()
+		render: function(id)
 		{
-			var videos = this.model.toJSON();
+			var video = this.model.get(id).toJSON();
 			
 			$(this.el).html(
-				this.template({videos: videos})
+				this.template({video: video})
 			);
 		}
-
 	});
 })(jQuery);
