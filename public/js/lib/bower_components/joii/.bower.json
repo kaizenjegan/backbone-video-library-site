@@ -1,0 +1,15 @@
+{
+  "name": "joii",
+  "homepage": "https://github.com/haroldiedema/joii",
+  "version": "3.1.2",
+  "_release": "3.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.1.2",
+    "commit": "7a967d83e2af3c36b1028b261756dd586170bb4c"
+  },
+  "_source": "git://github.com/haroldiedema/joii.git",
+  "_target": "~3.1.2",
+  "_originalSource": "joii",
+  "_direct": true
+}
