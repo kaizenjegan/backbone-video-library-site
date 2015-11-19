@@ -4,7 +4,8 @@ var app = app || {};
 {
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
-	        "view/:id": "renderVideoView"	   
+	        "view/:id": "renderVideoView",
+	        "upload": "renderUploadForm"
 	    }
 	});
 	
@@ -16,5 +17,9 @@ var app = app || {};
 		new app.VideoView({model: app.Videos, videoId: id});
 	});
 
+	app.router.on('route:renderUploadForm', function()
+	{	
+		new app.UploadView();
+	});
 	Backbone.history.start();
 })();
