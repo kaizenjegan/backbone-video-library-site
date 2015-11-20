@@ -15,6 +15,10 @@ var app = app || {};
                     video: video
                 })
             );
+        },
+        close: function()
+        {
+            console.log('close video view');
         }
     });
 })(jQuery);

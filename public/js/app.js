@@ -4,8 +4,8 @@ var app = app || {};
 (function()
  {
 
- 	app.Videos.fetch({reset: true});
- 	
+ 	// app.Videos.fetch({reset: true});
+ 	app.Videos.fetch();
 
 
  	
