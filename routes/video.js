@@ -6,6 +6,9 @@ var Video = mongoose.model('Video', videoSchema);
 var config = require('../env/config');
 
 router.get('/',  config.isAuthenticated, function(req, res, next) {
+	var limit = req.query.limit;
+	var page = req.query.page;
+
     Video.find({}, function(err, v) {
         if (err) {
             res.send(err);
@@ -14,7 +17,7 @@ router.get('/',  config.isAuthenticated, function(req, res, next) {
         if (v) {
             res.send(v);
         }
-    });
+    }).skip((page - 1) * limit).limit(limit);
 
 });
 
