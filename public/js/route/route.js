@@ -15,7 +15,9 @@ var app = app || {};
 
 	app.router.on('route:renderVideoView', function(id) 
 	{	
-		new app.VideoView({model: app.Videos, videoId: id});
+		var video = app.Videos.get(id).toJSON();
+
+		new app.VideoView({model: video});
 	});
 
 	app.router.on('route:renderUploadForm', function()

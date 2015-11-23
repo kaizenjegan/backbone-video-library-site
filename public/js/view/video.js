@@ -4,17 +4,23 @@ var app = app || {};
     app.VideoView = Backbone.View.extend({
         el: '#video-body',
         template: Handlebars.compile($('#video-show-template').html()),
+        events: {
+            'click #save': 'download'
+        },
         initialize: function(options) {
-            this.render(options.videoId);
+            this.render();
         },
         render: function(id) {
-            var video = this.model.get(id).toJSON();
-
             $(this.el).html(
                 this.template({
-                    video: video
+                    video: this.model
                 })
             );
+        },
+        download: function(e)
+        {   
+            // this.
+            console.log('save');
         },
         close: function() {
             console.log('close video view');

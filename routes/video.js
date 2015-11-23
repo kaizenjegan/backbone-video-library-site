@@ -22,7 +22,16 @@ router.get('/',  config.isAuthenticated, function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    res.send('post');
+    var name = req.body.name;
+
+
+    var video = new Video({
+        title: name
+    });
+
+    video.save(function(err){
+        res.status(201).send(video);
+    });
 });
 
 module.exports = router;
