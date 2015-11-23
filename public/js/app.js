@@ -1,11 +1,16 @@
 var app = app || {};
 
 
-(function()
- {
- 	app.Videos.fetch();
+(function() {
+    new app.HeaderView();
+    new app.ListView({
+        model: app.Videos
+    });
+    app.Users.fetch({
+        error: function(a, b, c) {
+            new app.LoginView();
+        }
+    });
 
 
- 	
- 	new app.ListView({model: app.Videos});
- })();
+})();

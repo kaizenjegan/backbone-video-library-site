@@ -16,8 +16,7 @@ var app = app || {};
                 })
             );
         },
-        close: function()
-        {
+        close: function() {
             console.log('close video view');
         }
     });

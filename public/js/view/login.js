@@ -1,10 +1,9 @@
 var app = app || {};
 
-
 (function($) {
-    app.UploadView = Backbone.View.extend({
+    app.LoginView = Backbone.View.extend({
         el: '#video-body',
-        template: Handlebars.compile($('#upload-template').html()),
+        template: Handlebars.compile($('#login-template').html()),
         initialize: function() {
             this.render();
         },

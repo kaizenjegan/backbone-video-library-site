@@ -1,24 +1,18 @@
 var app = app || {};
 
 (function($) {
-    app.HeaderView = Backbone.View.extend({
-        el: '#header',
+    app.SearchView = Backbone.View.extend({
+        el: '#video-body',
         template: Handlebars.compile($('#search-result-template').html()),
         events: {
-            'click #btn-search': 'search',
-            'keydown #search': 'Enter_Pressed'
+            // 'keyup #search': 'search'
+            'click #btn-search': 'search'
         },
         initialize: function() {
             this.render();
             //app.Search.
             this.listenTo(app.Search, 'add', this.render);
             this.listenTo(app.Search, 'change', this.render);
-        },
-        Enter_Pressed: function(e) {
-            if (e.keyCode === 13) {
-                this.search(null);
-            }
-
         },
         search: function(e) {
 
@@ -30,17 +24,14 @@ var app = app || {};
                 })
             });
         },
-        download: function(e) {
-            console.log('download');
-        },
         render: function() {
 
-            $('#video-body').html(
+            $(this.el).html(
 
                 this.template({
                     videos: app.Search.toJSON()
                 })
-                //bind
+
             );
             // console.log(app.Search.toJSON());
         }

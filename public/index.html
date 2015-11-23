@@ -11,10 +11,13 @@
 </head>
 <body>
       <div id="header">
-          <a href="/"> Home </a> <a href="#/upload"> Upload </a>
+          <a href="/"> Home </a>
+          <input id="search" type="text"  placeholder="Search">
+          <button id="btn-search"> search </button>
       </div>
 
-      <div id="video-body" class="container"></div>
+      <div id="video-body" class="container">
+      </div>
       
       <div id="menu">
       </div>
@@ -23,14 +26,27 @@
           upload
       </script>
 
+      <script id="search-result-template" type="text/x-handlebars-template">
+        {{#each videos}}
+                <div>{{Title}} </div>
+                <div><img src="{{Poster}}" /></div>
+                <div> <b><u>Plot<u></b></div>
+                <label> {{Plot}} </label>
+                <button id="download"> Download </button>
+        {{/each}}
+      </script>
+
+      <script id="search-template" type="text/x-handlebars-template">
+          <input id="search" type="text"  placeholder="Search">
+      </script>
     
       <script id="video-lib-template" type="text/x-handlebars-template">
          {{#each videos}}          
             <a href="#/view/{{_id}}">    
                 <img src="{{cover}}"/>
-            </a>
-              
+            </a>              
         {{/each}}
+        <div><span id="next">Page {{limit}} </span> </div>
       </script>
 
       <script id="video-show-template" type="text/x-handlebars-template">
@@ -39,6 +55,11 @@
             <source src="{{video.url}}" type="video/ogg">
           Your browser does not support the video tag.
           </video>
+      </script>
+
+
+      <script id="login-template" type="text/x-handlebars-template">
+          <a href="/auth/twitter"> Login</a>
       </script>
     </div>
 
@@ -56,13 +77,18 @@
     <script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.js"></script>
 
     <script src="js/model/video.js"></script>
+    <script src="js/model/search.js"></script>
     <script src="js/collection/video.js"></script>
+    <script src="js/collection/search.js"></script>
+    <script src="js/collection/user.js"></script>
+    <script src="js/model/user.js"></script>
     <script src="js/view/video.js"></script>
     <script src="js/view/list.js"></script>
     <script src="js/view/upload.js"></script>
+    <script src="js/view/header.js"></script>
+    <script src="js/view/login.js"></script>
     
     <script src="js/app.js"></script>
-    <script src="js/util.js"></script>
     <script src="js/route/route.js"></script>
  
     
