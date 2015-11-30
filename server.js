@@ -11,9 +11,12 @@ var auth = require('./routes/auth');
 var video = require('./routes/video');
 var session = require('express-session');
 var passport = require('passport');
+var TwitterStrategy = require('passport-twitter').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var app = express();
-var config = require('./env/config');
+var env;
+var config = env = require('./env/config');
 
 mongoose.connect(config.mongooseURL);
 mongoose.set('debug', true);
@@ -31,6 +34,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'topsecret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
+
+
 
 app.use('/', routes);
 app.use('/users', users);
