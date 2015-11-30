@@ -13,6 +13,9 @@ var app = app || {};
             //app.Search.
             this.listenTo(app.Search, 'add', this.render);
             this.listenTo(app.Search, 'change', this.render);
+
+            this.listenTo(app.Videos, 'change', this.renderFlix);
+            this.listenTo(app.Videos, 'add', this.renderFlix);
         },
         Enter_Pressed: function(e) {
             if (e.keyCode === 13) {
@@ -22,13 +25,20 @@ var app = app || {};
         },
         search: function(e) {
 
+            // var query = $('#search').val();
+            // console.log(query);
+            // app.Search.fetch({
+            //     data: $.param({
+            //         t: query
+            //     })
+            // });
+            this.searchFlixServer();
+        },
+        searchFlixServer: function()
+        {
             var query = $('#search').val();
-            console.log(query);
-            app.Search.fetch({
-                data: $.param({
-                    t: query
-                })
-            });
+
+            app.Videos.fetch({ data: {title: query}});
         },
         download: function(e) {
             console.log('download');

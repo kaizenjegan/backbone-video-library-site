@@ -9,6 +9,10 @@ var app = app || {};
     });
 
     app.Users.fetch({
+    	success: function(a,b,c)
+    	{
+    		console.log('success');
+    	},
         error: function(a, b, c) {
             new app.LoginView();
         }

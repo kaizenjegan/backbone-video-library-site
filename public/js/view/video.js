@@ -19,7 +19,6 @@ var app = app || {};
         },
         download: function(e)
         {   
-            // this.
             console.log('save');
         },
         close: function() {

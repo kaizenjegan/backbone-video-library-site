@@ -16,6 +16,7 @@ var app = express();
 var config = require('./env/config');
 
 mongoose.connect(config.mongooseURL);
+mongoose.set('debug', true);
 
 // view engine setup
 
