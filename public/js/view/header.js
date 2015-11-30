@@ -11,11 +11,14 @@ var app = app || {};
         initialize: function() {
             this.render();
             //app.Search.
-            this.listenTo(app.Search, 'add', this.render);
-            this.listenTo(app.Search, 'change', this.render);
+            this.listenTo(app.OMDB, 'add', this.renderOMDB);
+            this.listenTo(app.OMDB, 'change', this.renderOMDB);
 
             this.listenTo(app.Videos, 'change', this.renderFlix);
             this.listenTo(app.Videos, 'add', this.renderFlix);
+
+
+            app.Videos.on('result_empty', this.renderOMDBresults);
         },
         Enter_Pressed: function(e) {
             if (e.keyCode === 13) {
@@ -24,35 +27,59 @@ var app = app || {};
 
         },
         search: function(e) {
-
-            // var query = $('#search').val();
-            // console.log(query);
-            // app.Search.fetch({
-            //     data: $.param({
-            //         t: query
-            //     })
-            // });
-            this.searchFlixServer();
-        },
-        searchFlixServer: function()
-        {
             var query = $('#search').val();
 
-            app.Videos.fetch({ data: {title: query}});
+            app.Videos.fetch({
+                data: {
+                    title: query
+                },
+                success: function(model, response) {
+                    
+                    //If no results from flix server 
+                    if (response.length < 1) { 
+                        app.OMDB.fetch({
+                            data: $.param({
+                                t: query
+                            })
+                        });
+                    }
+                }
+            });
+        },
+        renderFlix:function()
+        {
+            $('#video-body').html(
+
+                this.template({
+                    videos: app.Videos.toJSON()
+                })
+                //bind
+            );
         },
         download: function(e) {
             console.log('download');
         },
-        render: function() {
+        renderOMDB: function() {
 
             $('#video-body').html(
 
                 this.template({
-                    videos: app.Search.toJSON()
+                    videos: app.OMDB.toJSON()
                 })
                 //bind
             );
-            // console.log(app.Search.toJSON());
+        },
+        renderFlix: function() {
+            
+            var search_result = app.Videos.toJSON()[0];
+            $('#video-body').html(
+                this.template({ 
+                        videos: [{
+                            Poster: search_result.cover,
+                            Plot: search_result.description
+                        }]
+                })
+            );
         }
     });
 })(jQuery);

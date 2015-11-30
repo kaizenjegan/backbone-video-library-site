@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-      <div id="header">
+      <div id="header" style="display:none">
           <a href="/"> Home </a>
           <input id="search" type="text"  placeholder="Search">
           <button id="btn-search"> search </button>
@@ -32,7 +32,7 @@
                 <div><img src="{{Poster}}" /></div>
                 <div> <b><u>Plot<u></b></div>
                 <label> {{Plot}} </label>
-                <button id="download"> Download </button>
+                <button id="download"> Request Future Download </button>
         {{/each}}
       </script>
 
@@ -78,11 +78,14 @@
     <script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.js"></script>
 
     <script src="js/model/video.js"></script>
-    <script src="js/model/search.js"></script>
-    <script src="js/collection/video.js"></script>
-    <script src="js/collection/search.js"></script>
-    <script src="js/collection/user.js"></script>
+    <script src="js/model/OMDB.js"></script>
+    <script src="js/model/FlixDB.js"></script>
     <script src="js/model/user.js"></script>
+    
+    <script src="js/collection/video.js"></script>
+    <script src="js/collection/OMDB.js"></script>
+    <script src="js/collection/user.js"></script>
+    
     <script src="js/view/video.js"></script>
     <script src="js/view/list.js"></script>
     <script src="js/view/upload.js"></script>
