@@ -17,8 +17,7 @@ var app = app || {};
                 })
             );
         },
-        download: function(e)
-        {   
+        download: function(e) {
             console.log('save');
         },
         close: function() {
