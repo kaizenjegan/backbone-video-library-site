@@ -2,8 +2,8 @@ var app = app || {};
 
 (function($)
 {
-	app.LoginView = Backbone.View.extend({
-		template: Handlebars.compile($('#login-template').html()),
+	app.SignupView = Backbone.View.extend({
+		template: Handlebars.compile($('#signup-template').html()),
 		initialize: function()
 		{
 			this.render()

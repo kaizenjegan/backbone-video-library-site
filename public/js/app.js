@@ -15,7 +15,7 @@ var app = app || {};
             });
         },
         error: function(a, b, c) {
-            new app.LoginView();
+            new app.NotLoggedInView();
         }
     });
 

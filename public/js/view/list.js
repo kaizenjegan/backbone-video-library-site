@@ -37,9 +37,6 @@ var app = app || {};
             var self = this;
             var videos = this.model.toJSON();
 
-
-
-
             $(this.el).html(this.template({
                 videos: videos,
                 limit: self.Page
