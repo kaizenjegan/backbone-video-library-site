@@ -23,9 +23,9 @@ var app = app || {};
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model, 'reset', this.render);
 
-            this.listenTo(this.OMDB, 'add', this.renderSearch);
-            this.listenTo(this.OMDB, 'change', this.renderSearch);
-            this.listenTo(this.OMDB, 'reset', this.renderSearch);
+            this.listenTo(app.OMDB, 'add', this.renderSearch);
+            this.listenTo(app.OMDB, 'change', this.renderSearch);
+            this.listenTo(app.OMDB, 'reset', this.renderSearch);
 
         },
         next: function(e) {
@@ -50,8 +50,8 @@ var app = app || {};
         renderSearch: function() {            
             var omdb = []; 
 
-            _.each(app.OMDB, function(data) {
-                    omdb.append({cover: data.Poster});
+            _.each(app.OMDB.toJSON(), function(data) {
+                    omdb.push({cover: data.Poster});
                 });
 
             $(this.el).html(

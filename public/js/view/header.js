@@ -18,12 +18,7 @@ var app = app || {};
 
         },
         search: function(e) {
-            var query = $('#search').val();
-
-
-            app.OMDB.fetch({
-                data: $.param({t: query})
-            });
+            var query = $('#search').val();    
 
             app.Videos.fetch({
                 data: {
