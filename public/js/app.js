@@ -2,22 +2,25 @@ var app = app || {};
 
 
 (function() {
+   
+    //check if user is logged in
+    app.Users.isLoggedIn();
 
 
-    app.Users.fetch({
-        success: function(model) {
-            // console.log('success');
-            $('#header').show();
+    app.Users.on('logged_in', function(){
+         $('#header').show();
             new app.HeaderView();
 
             new app.ListView({
                 model: app.Videos
             });
-        },
-        error: function(a, b, c) {
-            new app.NotLoggedInView();
-        }
     });
 
+
+    app.Users.on('not_logged_in', function()
+    {
+        $('#header').hide();
+        new app.NotLoggedInView();
+    });
 
 })();

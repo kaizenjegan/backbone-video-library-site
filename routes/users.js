@@ -29,7 +29,8 @@ router.get('/me', env.isAuthenticated, function(req, res, next) {
 
 router.get('/logout', env.isAuthenticated, function(req, res, next){
 	req.logout();
-	res.send('logged out');
+
+	res.redirect('/');
 });
 
 
@@ -39,8 +40,9 @@ router.post('/signup', function(req, res, next){
 	var displayname = req.body.displayname;
 	var username = req.body.username;
 	var password = req.body.password;
+	//var confirmPass =
 
-
+// 
 	var user = new User({
 		username: username,
 		password:password,
@@ -57,8 +59,9 @@ router.post('/signup', function(req, res, next){
 
 });
 
-router.post('/login',  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login' }));
+router.post('/login',  passport.authenticate('local'), function(req, res){
+	res.status(200).send('logged in');
+});
 
 
 module.exports = router;

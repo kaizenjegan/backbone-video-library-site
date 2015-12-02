@@ -12,4 +12,4 @@ var app = app || {};
         },
         idAttribute: '_id'
     });
-})()
+})();

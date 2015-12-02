@@ -1,7 +1,13 @@
-// var app = app || {};
+var app = app || {};
 
-// (function(){
-// 	searchFlix = Backbone.Collection.extend({
-// 		url: /
-// 	});
-// })();
+
+(function() {
+        var videoCollection = Backbone.Collection.extend({
+            url: '/video',
+            model: app.VideoModel
+        });
+
+        app.Videos = new videoCollection();
+    }
+
+)();

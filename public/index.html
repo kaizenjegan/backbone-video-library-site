@@ -7,6 +7,7 @@
       <link href="css/bootstrap.css" rel="stylesheet">
       <link href="css/mobile.css" rel="stylesheet">
       <link href="css/offcanvas.css" rel="stylesheet">
+
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -14,6 +15,7 @@
           <a href="/"> Home </a>
           <input id="search" type="text"  placeholder="Search">
           <button id="btn-search"> search </button>
+          <a href="/users/logout"> Logout </a>
       </div>
 
       <div id="video-body" class="container">
@@ -50,10 +52,10 @@
       </script>
 
       <script id="video-show-template" type="text/x-handlebars-template">
-          <video width="320" height="240" controls>
+          <video id="flix_video" width="320" height="240" controls  class="video-js vjs-default-skin" preload="auto">
             <source src="{{video.url}}" type="video/mp4">
             <source src="{{video.url}}" type="video/ogg">
-          Your browser does not support the video tag.
+            <p class="vjs-no-js">To view this video please enable JavaScript </p>
           </video>
           <div><button id="save"> save </button></div>
       </script>
@@ -80,7 +82,7 @@
             <input id="login_password" type="text" class="form-control" placeholder="password">
           </div>
           
-          <button id="login"> login </button>
+          <button id="btn-login"> login </button>
       </script>
 
       <script id="signup-template" type="text/x-handlebars-template">
@@ -92,9 +94,13 @@
             <input id="signup_confirm" type="text" class="form-control" placeholder="confirm password">
           </div>
 
-          <button id="signup"> signup </button>
+          <button id="btn-signup"> signup </button>
       </script>
     </div>
+
+    <script src="http://vjs.zencdn.net/vjs-version/video.js"></script>
+    <link href="http://vjs.zencdn.net/vjs-version/video-js.css" rel="stylesheet">
+
 
     <script src="js/lib/handlebars.js"></script>
     <script src="js/lib/jquery-1.11.3.min.js"></script>

@@ -15,7 +15,7 @@ router.get('/',  config.isAuthenticated, function(req, res, next) {
 
     if(title)
     {
-        Video.find({title: new RegExp(title)} , function(err, v) {
+        Video.find({title_lower: new RegExp(title.toLowerCase())} , function(err, v) {
             if (err) {
                 res.send(err);
             }
