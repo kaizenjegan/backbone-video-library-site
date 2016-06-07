@@ -42,14 +42,7 @@
           <input id="search" type="text"  placeholder="Search">
       </script>
     
-      <script id="video-lib-template" type="text/x-handlebars-template">
-         {{#each videos}}          
-            <a href="#/view/{{_id}}">    
-                <img src="{{cover}}"/>
-            </a>              
-        {{/each}}
-        <div><span id="next">Page {{limit}} </span> </div>
-      </script>
+      
 
       <script id="video-show-template" type="text/x-handlebars-template">
           <video id="flix_video" width="320" height="240" controls  class="video-js vjs-default-skin" preload="auto">
@@ -98,29 +91,32 @@
       </script>
     </div>
 
+
     <script src="http://vjs.zencdn.net/vjs-version/video.js"></script>
     <link href="http://vjs.zencdn.net/vjs-version/video-js.css" rel="stylesheet">
 
-
+    
     <script src="js/lib/handlebars.js"></script>
     <script src="js/lib/jquery-1.11.3.min.js"></script>
     <script src="js/lib/underscore-1-8-3.js"></script>
     <script src="js/lib/backbone-1-2-1.js"></script>    
     <script src="js/lib/backbone.localStorage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.js"></script>
     <script src="js/lib/localStorage-to-node.js"></script>
     <script src="js/lib/bootstrap.js"></script>
     <script src="js/lib/require.js"></script>
+    <script src="js/lib/templateManager.js"></script>
     <!-- // <script src="js/lib/joii.js"></script> -->
     <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.js"></script>
 
-    <script src="js/model/video.js"></script>
+    <script src="js/model/FlixDb.js"></script>
     <script src="js/model/OMDB.js"></script>
     <script src="js/model/FlixDB.js"></script>
     <script src="js/model/user.js"></script>
     
-    <script src="js/collection/video.js"></script>
+    <script src="js/collection/FlixDb.js"></script>
     <script src="js/collection/OMDB.js"></script>
     <script src="js/collection/user.js"></script>
     

@@ -179,3 +179,8 @@ a.disabled {
 {
   /*padding-right: 30px;*/
 }
+
+.poster {
+  width: 250px;
+  height: 400px;
+}

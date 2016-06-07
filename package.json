@@ -2,6 +2,7 @@
   "name": "video",
   "version": "0.0.0",
   "private": true,
+  "author": "jegan matthews",
   "scripts": {
     "start": "node ./bin/www",
     "debug": "node-debug --debug-brk=0 ./bin/www/"
@@ -12,6 +13,7 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "express-session": "^1.12.1",
+    "handlebars": "^4.0.5",
     "mongoose": "^4.2.6",
     "morgan": "~1.6.1",
     "passport": "^0.3.2",
@@ -20,6 +22,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
     "js-beautify": "^1.5.10",
     "jshint": "^2.8.0",
     "lint": "^1.1.2"

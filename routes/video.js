@@ -8,8 +8,8 @@ var config = require('../env/config');
 
 
 router.get('/',  config.isAuthenticated, function(req, res, next) {
-	var limit = req.query.limit;
-	var page = req.query.page;
+	var limit = parseInt(req.query.limit);
+	var page = parseInt(req.query.page);
     var title = req.query.title;
 
 

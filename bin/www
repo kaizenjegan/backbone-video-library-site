@@ -4,9 +4,18 @@
  * Module dependencies.
  */
 
+console.log(`Current directory: ${process.cwd()}`);
+
+
 var app = require('../server');
 var debug = require('debug')('video:server');
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
+var privateKey  = fs.readFileSync('./bin/sslcert/key.pem', 'utf8');
+var certificate = fs.readFileSync('./bin/sslcert/server.crt', 'utf8');
+
+var credentials = {key: privateKey, cert: certificate};
 
 /**
  * Get port from environment and store in Express.
@@ -20,12 +29,14 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
 server.listen(port);
+httpsServer.listen(8443);
 server.on('error', onError);
 server.on('listening', onListening);
 

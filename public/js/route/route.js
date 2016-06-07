@@ -25,9 +25,13 @@ var app = app || {};
 		new app.UploadView();
 	});
 
-	app.router.on("route:searchVideos", function(query)
+	app.router.on("route:searchVideos", function(query){
+
+	});
+
+	app.router.on("route:home", function(query)
 	{
-		// app.get
+		// new app.ListView({model: app.Videos});
 	});
 	Backbone.history.start();
 })();

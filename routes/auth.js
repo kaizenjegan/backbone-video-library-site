@@ -66,7 +66,7 @@ passport.use(new TwitterStrategy({
 //end implement passport
 
 router.post('/login',
-  passport.authenticate('local', { successRedirect: '/',
+  passport.authenticate('local', { successRedirect: '/index.html',
                                    failureRedirect: '/login' }));
 
 
