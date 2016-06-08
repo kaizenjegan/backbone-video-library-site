@@ -1,138 +1,25 @@
 <!doctype html>
-<html lang="en">
-<head>
-      <meta charset="utf-8">
-      <title></title>
-      <meta name="description" content="">
-      <link href="css/bootstrap.css" rel="stylesheet">
-      <link href="css/mobile.css" rel="stylesheet">
-      <link href="css/offcanvas.css" rel="stylesheet">
+<html lang="en" data-framework="backbonejs">
+	<head>
+		<meta charset="utf-8">
+		<title>Flix and Chill</title>
+		
+	</head>
+	<body>
+		<div id="header" style="display:none">
+	          <a href="/"> Home </a>
+	          <input id="search" type="text"  placeholder="Search">
+	          <button id="btn-search"> search </button>
+	          <a href="/users/logout"> Logout </a>
+	      </div>
 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-      <div id="header" style="display:none">
-          <a href="/"> Home </a>
-          <input id="search" type="text"  placeholder="Search">
-          <button id="btn-search"> search </button>
-          <a href="/users/logout"> Logout </a>
-      </div>
+	      <div id="video-body" class="container">
+	      </div>
 
-      <div id="video-body" class="container">
-      </div>
-      
-      <div id="menu">
-      </div>
-
-      <script id="upload-template" type="text/x-handlebars-template">
-          upload
-      </script>
-
-      <script id="search-result-template" type="text/x-handlebars-template">
-        {{#each videos}}
-                <div>{{Title}} </div>
-                <div><img src="{{Poster}}" /></div>
-                <div> <b><u>Plot<u></b></div>
-                <label> {{Plot}} </label>
-                <button id="download"> Request Future Download </button>
-        {{/each}}
-      </script>
-
-      <script id="search-template" type="text/x-handlebars-template">
-          <input id="search" type="text"  placeholder="Search">
-      </script>
-    
-      
-
-      <script id="video-show-template" type="text/x-handlebars-template">
-          <video id="flix_video" width="320" height="240" controls  class="video-js vjs-default-skin" preload="auto">
-            <source src="{{video.url}}" type="video/mp4">
-            <source src="{{video.url}}" type="video/ogg">
-            <p class="vjs-no-js">To view this video please enable JavaScript </p>
-          </video>
-          <div><button id="save"> save </button></div>
-      </script>
-
-
-      <script id="not-logged-template" type="text/x-handlebars-template">
-          <div><a href="/auth/twitter"> Twitter login</a></div>
-          <div><a href="#"> Facebook login</a></div>
-          <div><a href="#"> Google login</a></div>
-
-          <div>login / signup page</div>
-
-
-          <div id="login" />
-          <div id="signup" />
-
-
-      </script>
-
-      <script id="login-template" type="text/x-handlebars-template">
-        <h1><b> Login </b></h1>
-        <div class="form-group">
-            <input id="login_username" type="text" class="form-control" placeholder="username">
-            <input id="login_password" type="text" class="form-control" placeholder="password">
-          </div>
-          
-          <button id="btn-login"> login </button>
-      </script>
-
-      <script id="signup-template" type="text/x-handlebars-template">
-
-          <h1><b> Sign up </b></h1>
-          <div class="form-group">
-            <input id="signup_username" type="text" class="form-control" placeholder="username">
-            <input id="signup_password" type="text" class="form-control" placeholder="password">
-            <input id="signup_confirm" type="text" class="form-control" placeholder="confirm password">
-          </div>
-
-          <button id="btn-signup"> signup </button>
-      </script>
-    </div>
-
-
-    <script src="http://vjs.zencdn.net/vjs-version/video.js"></script>
-    <link href="http://vjs.zencdn.net/vjs-version/video-js.css" rel="stylesheet">
-
-    
-    <script src="js/lib/handlebars.js"></script>
-    <script src="js/lib/jquery-1.11.3.min.js"></script>
-    <script src="js/lib/underscore-1-8-3.js"></script>
-    <script src="js/lib/backbone-1-2-1.js"></script>    
-    <script src="js/lib/backbone.localStorage.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.js"></script>
-    <script src="js/lib/localStorage-to-node.js"></script>
-    <script src="js/lib/bootstrap.js"></script>
-    <script src="js/lib/require.js"></script>
-    <script src="js/lib/templateManager.js"></script>
-    <!-- // <script src="js/lib/joii.js"></script> -->
-    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.js"></script>
-
-    <script src="js/model/FlixDb.js"></script>
-    <script src="js/model/OMDB.js"></script>
-    <script src="js/model/FlixDB.js"></script>
-    <script src="js/model/user.js"></script>
-    
-    <script src="js/collection/FlixDb.js"></script>
-    <script src="js/collection/OMDB.js"></script>
-    <script src="js/collection/user.js"></script>
-    
-    <script src="js/view/video.js"></script>
-    <script src="js/view/list.js"></script>
-    <script src="js/view/upload.js"></script>
-    <script src="js/view/header.js"></script>
-    <script src="js/view/not_logged_in.js"></script>
-    <script src="js/view/login.js"></script>
-    <script src="js/view/signup.js"></script>
-
-    
-    <script src="js/app.js"></script>
-    <script src="js/route/route.js"></script>
- 
-    
-  <!-- // <script src="demo.js"></script> -->
-</body>
+		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="bower_components/handlebars/handlebars.js"></script>
+		<script src="bower_components/handlebars/handlebars.runtime.js"></script>
+		<script src="js/templates/precompiled.js"></script>
+		<script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+	</body>
 </html>
