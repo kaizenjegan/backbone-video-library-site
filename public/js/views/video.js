@@ -7,7 +7,7 @@ define([
 
     var videoView = Backbone.View.extend({
         el: '#video-body',
-        template: Handlebars.compile($('#video-show-template').html()),
+        template: Template['show-video.hbs'],
         events: {
             'click #save': 'download'
         },

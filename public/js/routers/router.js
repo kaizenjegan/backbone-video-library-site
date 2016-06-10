@@ -2,9 +2,9 @@
 define([
 	'jquery',
 	'backbone',
-	'flixDb',
-	''
-], function ($, Backbone) {
+	'collections/flixDb',
+	'views/video'
+], function ($, Backbone, FlixDb, VideoView) {
 	'use strict';
 
 	var AppRouter = Backbone.Router.extend({
@@ -15,19 +15,11 @@ define([
 	    },
 
 	    renderVideoView: function(id){
+	    	var video = FlixDb.get(id).toJSON();
 
+			new VideoView({model: video});
 	    },
 
-	});
-
-
-	var router = new AppRouter();
-
-	router.on('route:renderVideoView', function(id) 
-	{	
-		// var video = app.Videos.get(id).toJSON();
-
-		// new app.VideoView({model: video});
 	});
 
 	return AppRouter;

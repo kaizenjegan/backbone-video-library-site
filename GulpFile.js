@@ -21,3 +21,6 @@ gulp.task('default', function() {
   	// }
   	
 });
+
+
+//({title: 'Test Video', title_lower: 'test video', description: 'some random description', cover: 'http://www.gettyimages.pt/gi-resources/images/Homepage/Hero/PT/PT_hero_42_153645159.jpg', url: 'http://www.w3schools.com/html/mov_bbb.mp4'});
