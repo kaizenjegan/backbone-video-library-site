@@ -38,9 +38,11 @@ require.config({
 		"handlebars.runtime":  '../bower_components/handlebars/handlebars.runtime',
 		underscore: '../bower_components/underscore/underscore',
 		backbone: '../bower_components/backbone/backbone',
-		text: '../node_modules/requirejs-text/text',
+		// text: '../node_modules/requirejs-text/text',
 		hbs: 'lib/require-handlebars-plugin/hbs',
-		compiled_templates: 'templates/precompiled'
+		compiled_templates: 'templates/precompiled',
+		browserify: '../../node_modules/browserify',
+		webtorrent: '../../node_modules/webtorrent'
 	},
 	hbs: { // optional
         helpers: true,            // default: true
@@ -56,8 +58,9 @@ require([
 	'views/list',
 	'views/not-logged-in',
 	'views/header',
-	'collections/flixDb'
-], function (Backbone, Workspace, Users, ListView, SignUpView, HeaderView, FlixDb) {
+	'collections/flixDb',
+	'views/addTorrent'
+], function (Backbone, Workspace, Users, ListView, SignUpView, HeaderView, FlixDb, AddTorrent) {
 	/*jshint nonew:false*/
 	// Initialize routing and start Backbone.history()
 	new Workspace();
@@ -73,15 +76,17 @@ require([
          console.log('logged in');
             new HeaderView();
 
-            new ListView({
-                model: FlixDb
-            });
+            // new ListView({
+            //     model: FlixDb
+            // });
+
+            new AddTorrent();
     });
 
 
     Users.on('not_logged_in', function()
     {
-        console.log('not logged in');
+        // console.log('not logged in');
         $('#header').hide();
         new SignUpView();
     });

@@ -1,10 +1,9 @@
 /*global define*/
 define([
     'jquery',
-    'underscore',
     'backbone',
     'compiled_templates'
-], function ($, _, Backbone, Templates) {
+], function ($, Backbone, Templates) {
     'use strict';
 
     var HeaderView = Backbone.View.extend({
