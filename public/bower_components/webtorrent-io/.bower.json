@@ -1,0 +1,15 @@
+{
+  "name": "webtorrent-io",
+  "homepage": "https://github.com/sjaakiejj/webtorrent",
+  "version": "0.41.0",
+  "_release": "0.41.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.41.0",
+    "commit": "d6e23b05b455d2ca4f03c0a7adc61b2e964aa9b3"
+  },
+  "_source": "https://github.com/sjaakiejj/webtorrent.git",
+  "_target": "^0.41.0",
+  "_originalSource": "webtorrent-io",
+  "_direct": true
+}
