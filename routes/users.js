@@ -36,13 +36,10 @@ router.get('/logout', env.isAuthenticated, function(req, res, next){
 
 
 router.post('/signup', function(req, res, next){
-	//res.send('signup');
 	var displayname = req.body.displayname;
 	var username = req.body.username;
 	var password = req.body.password;
-	//var confirmPass =
 
-// 
 	var user = new User({
 		username: username,
 		password:password,

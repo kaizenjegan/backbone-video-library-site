@@ -57,16 +57,37 @@ router.get('/:movieName',function(req, res, next){
 });
 
 router.post('/', function(req, res, next) {
-    var name = req.body.name;
+    var name = req.body.title;
+    var cover = req.body.cover;
+    var url = req.body.url;
+    var description = req.body.description;
 
     var video = new Video({
-        title: name
+        title: name,
+        cover: cover,
+        url: url,
+        description: description
     });
 
     video.save(function(err){
         res.status(201).send(video);
     });
 });
+
+router.delete('/:id', functiown(req, res, next){
+    var id = req.params.id;
+
+
+    Video.remove({id: id}, function(err){
+        if(!err){
+            res.send("success");
+        }
+        else
+        {
+            res.send(err)
+        }
+    })
+})
 
 
 //

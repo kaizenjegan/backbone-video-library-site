@@ -6,6 +6,7 @@ define([
     var videoModel = Backbone.Model.extend({
         defaults: {
             '_id': '',
+            'title': '',
             'description': '',
             'cover': '',
             'url': ''

@@ -7,9 +7,7 @@ define([
 ], function ($, _, Backbone, Templates) {
     var ListView = Backbone.View.extend({
         el: '#video-body',
-        // template: Template, 
         template: Templates['list-video.hbs'],
-        // Handlebars.compile($('#video-lib-template').html()),
         events: {
             'click #next': 'next'
         },
@@ -28,8 +26,9 @@ define([
                 this.listenTo(this.model, 'add', this.render);
                 this.listenTo(this.model, 'change', this.render);
                 this.listenTo(this.model, 'reset', this.render);
-            }
 
+                this.render();
+            }
         },
         next: function(e) {
             this.Page += 1;

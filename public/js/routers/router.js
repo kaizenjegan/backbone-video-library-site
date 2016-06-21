@@ -3,15 +3,24 @@ define([
 	'jquery',
 	'backbone',
 	'collections/flixDb',
-	'views/video',
-	'views/addTorrent'
-], function ($, Backbone, FlixDb, VideoView, AddTorrent) {
+	'views/showVideo',
+	'views/addTorrent',
+	'views/addVideo',
+	'views/list',
+], function ($, Backbone, FlixDb, VideoView, AddTorrentView, AddVideoView, ListView) {
 	'use strict';
 
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
+	    	'home': 'home',
 	        "view/:id": "renderVideoView",	  
-	        'AddTorrent': "addTorrent"
+	        'addTorrent': "addTorrent",
+	        'addVideo': "addVideo"
+	    },
+	    home: function(){
+	    	new ListView({
+                model: FlixDb
+            });
 	    },
 	    renderVideoView: function(id){
 	    	var video = FlixDb.get(id).toJSON();
@@ -19,7 +28,11 @@ define([
 			new VideoView({model: video});
 	    },
 	    addTorrent: function(){
-	    	new AddTorrent();
+	    	new AddVideoView();
+	    },
+	    addVideo: function(){
+	    	new AddVideoView();
+	    	
 	    }
 	});
 
