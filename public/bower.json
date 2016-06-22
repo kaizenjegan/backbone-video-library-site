@@ -26,6 +26,7 @@
     "text": "requirejs-text#^2.0.15",
     "requirejs": "^2.2.0",
     "handlebars": "^4.0.5",
-    "require-handlebars-plugin": "^1.0.0"
+    "require-handlebars-plugin": "^1.0.0",
+    "bootstrap": "^3.3.6"
   }
 }

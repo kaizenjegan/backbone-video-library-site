@@ -1,9 +1,15 @@
-<!-- <script id="video-lib-template" type="text/x-handlebars-template"> -->
-<p> vid template works </p>
+<div class="row">
  {{#each videos}}          
-    <a href="#/view/{{_id}}">    
-        <img src="{{cover}}" class='poster'/>
-    </a>              
+    <div class="card">
+	    <a href="#/view/{{_id}}">    
+	        <!-- <img src="{{cover}}" class='poster'/> -->
+	        <img src="img/placeholder.png" class='poster'/> 
+	    </a>    
+		<p> {{title}}</p>    
+    </div>
 {{/each}}
+</div>
 <div><span id="next">Page {{limit}} </span> </div>
 <!-- </script> -->
+
+

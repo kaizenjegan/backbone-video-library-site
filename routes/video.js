@@ -74,7 +74,7 @@ router.post('/', function(req, res, next) {
     });
 });
 
-router.delete('/:id', functiown(req, res, next){
+router.delete('/:id', function(req, res, next){
     var id = req.params.id;
 
 
@@ -87,7 +87,7 @@ router.delete('/:id', functiown(req, res, next){
             res.send(err)
         }
     })
-})
+});
 
 
 //

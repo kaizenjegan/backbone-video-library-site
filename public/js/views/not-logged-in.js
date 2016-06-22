@@ -24,8 +24,8 @@ define([
             //     el: $('#signup')
             // });
 
-            this.$el.append(this.loginView.render().el);
-            this.$el.append(this.signupView.render().el);
+            // this.$el.append(this.loginView.render().el);
+            // this.$el.append(this.signupView.render().el);
         }
     });
 

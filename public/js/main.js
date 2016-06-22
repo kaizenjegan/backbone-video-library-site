@@ -29,6 +29,12 @@ require.config({
 				'handlebars.runtime'
 			],
 			exports: 'compiled_templates'
+		},
+		bootstrap: {
+			deps: [
+				'jquery'
+			],
+			exports: 'bootstrap'
 		}
 
 	},
@@ -42,7 +48,8 @@ require.config({
 		hbs: 'lib/require-handlebars-plugin/hbs',
 		compiled_templates: 'templates/precompiled',
 		browserify: '../../node_modules/browserify',
-		webtorrent: '../bower_components/webtorrent-io/webtorrent.min'
+		webtorrent: '../bower_components/webtorrent-io/webtorrent.min',
+		bootstrap: '../bower_components/bootstrap/dist/js/bootstrap.min'
 	},
 	hbs: { // optional
         helpers: true,            // default: true
