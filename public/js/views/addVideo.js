@@ -31,10 +31,6 @@ define(['backbone','jquery', 'compiled_templates', 'models/video', 'collections/
 					console.log('failure');
 				}
 
-				// model.save({
-				// 	success: saveSuccess,
-				// 	error: saveError
-				// });
 
 				FlixDb.create(model,{
 					type: 'POST',

@@ -28,3 +28,20 @@
     border: 1px solid #e5e5e5;
     border-radius: .25rem;
 }
+
+#flix_video{
+	height: 531px;
+    width: 944px;
+}
+
+
+.signup{
+  margin-top: 60px;
+}
+/*
+z-index: 10;
+    height: 531px;
+    width: 944px;
+    left: auto;
+    visibility: visible;
+    */
