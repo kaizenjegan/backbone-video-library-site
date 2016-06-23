@@ -66,35 +66,31 @@ require([
 	'views/not-logged-in',
 	'views/header',
 	'collections/flixDb',
-	'views/addTorrent'
-], function (Backbone, Workspace, Users, ListView, SignUpView, HeaderView, FlixDb, AddTorrent) {
+	'utils/ViewManager'
+], function (Backbone, Workspace, Users, ListView, SignUpView, HeaderView, FlixDb, vm) {
 	/*jshint nonew:false*/
-	// Initialize routing and start Backbone.history()
+
+	Backbone.View.prototype.close = function(){
+		// this.unbind(); //not working		
+	}
+
 	new Workspace();
 	Backbone.history.start();
-
-	// Initialize the application view
-	// new AppView();
 
 	Users.isLoggedIn();
 
     Users.on('logged_in', function(){
-         $('#header').show();
-         console.log('logged in');
-            new HeaderView();
+        $('#header').show();
+         
+        new HeaderView();
 
-            new ListView({
-                model: FlixDb
-            });
-
-            // new AddTorrent();
+        vm.showView(ListView, {model: FlixDb});
     });
 
 
     Users.on('not_logged_in', function()
-    {
-        // console.log('not logged in');
+    {        
         $('#header').hide();
-        new SignUpView();
+        vm.showView(SignUpView);
     });
 });

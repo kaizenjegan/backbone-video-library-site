@@ -25,10 +25,9 @@ define([
 
                 this.listenTo(this.model, 'add', this.render);
                 this.listenTo(this.model, 'change', this.render);
-                this.listenTo(this.model, 'reset', this.render);
-
-                this.render();
+                this.listenTo(this.model, 'reset', this.render);                
             }
+            this.render();
         },
         next: function(e) {
             this.Page += 1;
@@ -61,8 +60,9 @@ define([
             );
         },
         close: function() {
-            console.log('close video list');
+            $(this.el).undelegate('#AddVid', 'click');
         }
+
     });
 
     return ListView;

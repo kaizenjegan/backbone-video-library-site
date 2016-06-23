@@ -37,6 +37,9 @@ define(['backbone','jquery', 'compiled_templates', 'models/video', 'collections/
 					success: saveSuccess,
 					error: saveError
 				});
+			},
+			close: function(){
+				$(this.el).undelegate('#AddVid', 'click');
 			}
 		});
 

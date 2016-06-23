@@ -23,9 +23,10 @@ define([
         },
         download: function(e) {
             console.log('save');
+
         },
-        close: function() {
-            console.log('close video view');
+        close: function(){
+            $(this.el).undelegate('#delete', 'click');
         }
     });
 

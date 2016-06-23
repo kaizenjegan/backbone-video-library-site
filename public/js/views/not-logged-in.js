@@ -12,7 +12,7 @@ define([
             this.render();
         },
         render: function() {
-            $(this.el).html(
+            $(this.el).append(
                 this.template()
             );
 
