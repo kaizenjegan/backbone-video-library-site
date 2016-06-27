@@ -10,19 +10,7 @@ define([
     var users = Backbone.Collection.extend({
         url: '/users/me',
         model: userModel,
-        testing: function()
-        {
-        	this.fetch({
-        		success: function()
-        		{
-        			console.log('test successful');
-        		},
-        		error: function()
-        		{
-        			console.log('error in testing');
-        		}
-        	});
-        },
+        current: '',
         login: function(usr, pwd)
         {
         	var self = this;
@@ -33,7 +21,10 @@ define([
         		contentType: 'application/json',
         		data: JSON.stringify({username: usr, password: pwd}),
         		success: function(data){
-        			self.trigger('logged_in');
+        			self.current = new userModel(userModel);
+                    self.trigger('logged_in');
+                    
+
         		},
         		error: function(a, b, c){
         			self.trigger('not_logged_in');
@@ -62,6 +53,7 @@ define([
         	var self = this;
         	this.fetch({
         		success: function(model) {
+                    self.current = model.toJSON()[0];
         			self.trigger('logged_in');
         		},
         		error: function()

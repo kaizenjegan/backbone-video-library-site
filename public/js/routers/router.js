@@ -20,7 +20,7 @@ define([
       		ViewManager.showView(ListView, {model: FlixDb});
 	    },
 	    renderVideoView: function(id){
-	    	var video = FlixDb.get(id).toJSON();
+	    	var video = FlixDb.get(id);
 
 			ViewManager.showView(VideoView, {model: video});
 	    },

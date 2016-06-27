@@ -77,10 +77,9 @@ router.post('/', function(req, res, next) {
 router.delete('/:id', function(req, res, next){
     var id = req.params.id;
 
-
-    Video.remove({id: id}, function(err){
+    Video.remove({_id: id}, function(err){
         if(!err){
-            res.send("success");
+            res.status(204).send({});
         }
         else
         {

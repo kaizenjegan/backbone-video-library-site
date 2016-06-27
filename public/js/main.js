@@ -1,4 +1,4 @@
-/*global require*/
+	/*global require*/
 'use strict';
 
 // Require.js allows us to configure shortcut alias
@@ -67,14 +67,14 @@ require([
 	'views/header',
 	'collections/flixDb',
 	'utils/ViewManager'
-], function (Backbone, Workspace, Users, ListView, SignUpView, HeaderView, FlixDb, vm) {
+], function (Backbone, Workspace, Users, ListView, SignUpView, NavigationBarView, FlixDb, vm) {
 	/*jshint nonew:false*/
 
 	Backbone.View.prototype.close = function(){
 		// this.unbind(); //not working		
 	}
 
-	new Workspace();
+	vm.router = new Workspace();
 	Backbone.history.start();
 
 	Users.isLoggedIn();
@@ -82,7 +82,7 @@ require([
     Users.on('logged_in', function(){
         $('#header').show();
          
-        new HeaderView();
+        new NavigationBarView();
 
         vm.showView(ListView, {model: FlixDb});
     });

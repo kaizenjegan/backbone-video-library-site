@@ -2,7 +2,8 @@
 define([
     'jquery',
     'backbone',
-    'compiled_templates'
+    'compiled_templates',
+    'collections/user'
 ], function ($, Backbone, Templates) {
     'use strict';
 

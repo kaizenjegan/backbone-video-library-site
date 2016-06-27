@@ -2,8 +2,10 @@ define([
     'jquery',
     'backbone',
     'underscore',
-    'compiled_templates'
-], function($, Backbone, _, Template){
+    'compiled_templates',
+    'utils/ViewManager',
+    'views/deleteVideo'
+], function($, Backbone, _, Template, vm, deleteVideoView){
 
     var videoView = Backbone.View.extend({
         el: '#video-body',
@@ -17,13 +19,12 @@ define([
         render: function(id) {
             $(this.el).html(
                 this.template({
-                    video: this.model
+                    video: this.model.toJSON()
                 })
             );
         },
-        download: function(e) {
-            console.log('save');
-
+        delete: function(e) {
+            vm.showView(deleteVideoView,  {model: this.model});
         },
         close: function(){
             $(this.el).undelegate('#delete', 'click');
