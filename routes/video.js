@@ -6,6 +6,11 @@ var Video = mongoose.model('Video', videoSchema);
 var config = require('../env/config');
 
 
+router.get('/test', function(req, res, next){
+    res.send([{ name : 'john'},
+                {name: 'jane'},
+                {name: 'jack'}]);
+})
 
 router.get('/',  config.isAuthenticated, function(req, res, next) {
 	var limit = parseInt(req.query.limit);

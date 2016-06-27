@@ -1,5 +1,19 @@
-var gulp = require('gulp');
+var request = require('supertest')
+  , express = require('express');
 
-gulp.task('default', function() {
-  // place code for your default task here
+var app = express();
+
+app.get('/user', function(req, res){
+  res.send(200, { name: 'toto' });
 });
+
+
+describe('GET /user', function(){
+  it('should respond with json', function(done){
+    request(app)
+      .get('/user')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', 'json')
+      .expect(200, done);
+  })
+})
