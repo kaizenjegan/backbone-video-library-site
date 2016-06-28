@@ -11,7 +11,8 @@ define(['compiled_templates',
 			'click #yes': 'delete',
 			'click #no': 'cancel'
 		},
-		initialize: function(){
+		initialize: function(options){
+			this.modelTest = this.model;
 			this.render();
 		},
 		render: function(){
@@ -22,7 +23,7 @@ define(['compiled_templates',
 		delete: function(){
 			// var model = FlixDb.get(this.model.toJSON()._id);
 			// console.log(model);
-			this.model.destroy({success: function(){
+			this.modelTest.destroy({success: function(){
 					 // Backbone.sync();
 					 vm.router.navigate('home', {trigger: true});
 

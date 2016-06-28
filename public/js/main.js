@@ -66,8 +66,9 @@ require([
 	'views/not-logged-in',
 	'views/header',
 	'collections/flixDb',
-	'utils/ViewManager'
-], function (Backbone, Workspace, Users, ListView, SignUpView, NavigationBarView, FlixDb, vm) {
+	'utils/ViewManager',
+	'views/alerts'
+], function (Backbone, Workspace, Users, ListView, SignUpView, NavigationBarView, FlixDb, vm, Alerts) {
 	/*jshint nonew:false*/
 
 	Backbone.View.prototype.close = function(){
@@ -78,6 +79,8 @@ require([
 	Backbone.history.start();
 
 	Users.isLoggedIn();
+
+	new Alerts();
 
     Users.on('logged_in', function(){
         $('#header').show();
