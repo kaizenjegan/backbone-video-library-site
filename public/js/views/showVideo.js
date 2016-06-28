@@ -4,8 +4,10 @@ define([
     'underscore',
     'compiled_templates',
     'utils/ViewManager',
-    'views/deleteVideo'
-], function($, Backbone, _, Template, vm, deleteVideoView){
+    'views/deleteVideo',
+    'views/alerts',
+    'utils/ViewManager'
+], function($, Backbone, _, Template, vm, deleteVideoView, Alerts, vm){
 
     var videoView = Backbone.View.extend({
         el: '#video-body',
@@ -14,6 +16,9 @@ define([
             'click #delete': 'delete'
         },
         initialize: function(options) {
+            // vm.showView(Alerts);
+            this.alerts = new Alerts();
+
             this.render();
         },
         render: function(id) {
@@ -27,6 +32,7 @@ define([
             vm.showView(deleteVideoView,  {model: this.model});
         },
         close: function(){
+            this.alerts.close();
             $(this.el).undelegate('#delete', 'click');
         }
     });

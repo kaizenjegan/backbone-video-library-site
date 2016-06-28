@@ -71,6 +71,9 @@ require([
 ], function (Backbone, Workspace, Users, ListView, SignUpView, NavigationBarView, FlixDb, vm, Alerts) {
 	/*jshint nonew:false*/
 
+	Backbone.View.prototype.initialize = function(){
+		// this.stopListening();
+	}
 	Backbone.View.prototype.close = function(){
 		// this.unbind(); //not working		
 	}
@@ -80,7 +83,7 @@ require([
 
 	Users.isLoggedIn();
 
-	new Alerts();
+	// new Alerts();
 
     Users.on('logged_in', function(){
         $('#header').show();

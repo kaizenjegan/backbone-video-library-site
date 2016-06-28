@@ -62,9 +62,7 @@ define([
         close: function() {
             $(this.el).undelegate('#AddVid', 'click');
             
-            this.stopListening(this.model, 'add', this.render);
-            this.stopListening(this.model, 'change', this.render);
-            this.stopListening(this.model, 'reset', this.render);   
+            this.stopListening(this.model);
         }
 
     });

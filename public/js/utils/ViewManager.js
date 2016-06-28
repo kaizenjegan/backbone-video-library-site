@@ -7,9 +7,11 @@ define([], function(){
 
 			if(params){
 				this.currentView = new View(params);
+				
 			}else
 			{
 				this.currentView = new View();	
+				
 			}
 		},
 		router: {}

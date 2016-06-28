@@ -9,7 +9,7 @@ function(Backbone, $, flixDb, common, Template){
 		template: Template['alerts.hbs'],
 		initialize: function(){
 
-			setInterval(function(){
+			this.timerId = setInterval(function(){
 				flixDb.fetch();
 				console.log('fetching data');
 			}, common.FLIX_DB_POLL_IN_SEC);
@@ -19,12 +19,17 @@ function(Backbone, $, flixDb, common, Template){
 		render: function(){
 			var seconds = 1000;
 			this.$el.html(
-				this.template({message: "You've added a new video"})).fadeIn(500, function(){				
+				this.template({message: "A new video has been added"})).fadeIn(500, function(){				
 					setTimeout(function(){
 						$('#alert').fadeOut()
 					}, 7 * seconds);
 			});
 		},
+		close: function(){
+			this.stopListening(flixDb);
+
+			clearInterval(this.timerId);
+		}
 	});
 
 	return alerts;
