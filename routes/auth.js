@@ -70,9 +70,6 @@ router.post('/login',
                                    failureRedirect: '/login' }));
 
 
-
-
-
 router.get('/twitter', passport.authenticate('twitter'));
 
 router.get('/twitter/callback', 

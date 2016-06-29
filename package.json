@@ -30,6 +30,8 @@
     "js-beautify": "^1.5.10",
     "jshint": "^2.8.0",
     "lint": "^1.1.2",
+    "mocha": "^2.5.3",
+    "should": "^9.0.2",
     "supertest": "^1.2.0"
   }
 }
