@@ -9,6 +9,7 @@ define([], function () {
 		// What is the enter key constant?
 		ENTER_KEY: 13,
 		ESCAPE_KEY: 27,
-		FLIX_DB_POLL_IN_SEC: 10000
+		FLIX_DB_POLL_IN_SEC: 10000,
+		NEW_VIDEO_ALERT: "A new video haz been added"
 	};
 });

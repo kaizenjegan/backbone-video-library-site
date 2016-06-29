@@ -19,7 +19,7 @@ function(Backbone, $, flixDb, common, Template){
 		render: function(){
 			var seconds = 1000;
 			this.$el.html(
-				this.template({message: "A new video has been added"})).fadeIn(500, function(){				
+				this.template({message: common.NEW_VIDEO_ALERT})).fadeIn(500, function(){				
 					setTimeout(function(){
 						$('#alert').fadeOut()
 					}, 7 * seconds);
