@@ -33,8 +33,6 @@ router.get('/logout', env.isAuthenticated, function(req, res, next){
 	res.redirect('/');
 });
 
-
-
 router.post('/signup', function(req, res, next){
 	var displayname = req.body.displayname;
 	var username = req.body.username;
@@ -51,6 +49,10 @@ router.post('/signup', function(req, res, next){
 		if(u)
 		{
 			res.send(u);
+		}
+
+		if(err){
+			res.send(err);
 		}
 	});
 
