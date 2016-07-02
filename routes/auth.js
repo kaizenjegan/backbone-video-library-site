@@ -68,16 +68,24 @@ passport.use(new GoogleStrategy(env.google,
      User.findOne({ oauthID: profile.id }, function(err, user) {
             if(err) { console.log(err); }
 
+            console.log('\n\n\n\n');
+
+            console.log(profile);
+
+            console.log('\n\n\n\n');
+
             if (!err && user != null) {
-                done(null, user);
+                cb(null, user);
             } 
             else 
             {
+
+
                 //log where u are authenticating from.
                 //e.g authType: twitter
                 var user = new User({
                     oauthID: profile.id,
-                    username: profile.username,
+                    username: profile.name,
                     displayName: profile.displayName,
                     created: Date.now()
                 });
@@ -103,13 +111,13 @@ router.post('/login',  passport.authenticate('local', { successRedirect: '/index
 router.get('/twitter', passport.authenticate('twitter'));
 
 router.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/index.html',
-                                     failureRedirect: '/fail' }));
+                                     failureRedirect: '/fail.html' }));
 
 
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 
 router.get('/google/callback', passport.authenticate('google', { successRedirect: '/index.html',
-                                     failureRedirect: '/fail' }));
+                                     failureRedirect: '/fail.html' }));
 
 
 
