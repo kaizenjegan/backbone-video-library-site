@@ -1,22 +1,25 @@
 var twitterStrategy = {
-	consumerKey: process.env.TwitterConsumerKey,
-	consumerSecret: process.env.TwitterConsumerSecret,
+	consumerKey: process.env.TwitterKey,
+	consumerSecret: process.env.TwitterSecret,
 	callback: process.env.TwitterCallback
 };
 
 var googleStrategy = {
-	clientID: process.env.GoogleConsumerKey,
-	clientSecret: process.env.GoogleConsumerSecret,
+	clientID: process.env.GoogleKey,
+	clientSecret: process.env.GoogleSecret,
 	callbackURL: process.env.GoogleCallback
 };
   
  var facebookStrategy = {
-
+ 	clientID: process.env.FacebookKey,
+	clientSecret: process.env.FacebookSecret,
+	callbackURL: process.env.FacebookCallback
  };
 
 var config = {
 	twitter: twitterStrategy,
 	google: googleStrategy,
+	facebook: facebookStrategy,
 	mongooseURL: process.env.MongooseURL,
 	isAuthenticated: function(req, res, next)
 	{

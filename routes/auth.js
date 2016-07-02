@@ -5,6 +5,7 @@ var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var env = require('../env/config');
 var userSchema = require('../model/user');
 var User = mongoose.model('User', userSchema);
@@ -103,6 +104,15 @@ passport.use(new GoogleStrategy(env.google,
         });
   }
 ));
+
+
+passport.use(new FacebookStrategy(env.facebook,
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 //end implement passport
 
 router.post('/login',  passport.authenticate('local', { successRedirect: '/index.html',
@@ -117,6 +127,11 @@ router.get('/twitter/callback', passport.authenticate('twitter', { successRedire
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 
 router.get('/google/callback', passport.authenticate('google', { successRedirect: '/index.html',
+                                     failureRedirect: '/fail.html' }));
+
+router.get('/auth/facebook', passport.authenticate('facebook'));
+ 
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/index.html',
                                      failureRedirect: '/fail.html' }));
 
 
