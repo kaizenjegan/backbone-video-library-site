@@ -42,6 +42,10 @@
 .hidden {
   display: none;
 }
+
+.username{
+  padding-right: 15px;
+}
 /*
 z-index: 10;
     height: 531px;

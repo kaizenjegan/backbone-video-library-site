@@ -86,7 +86,7 @@ passport.use(new GoogleStrategy(env.google,
                 //e.g authType: twitter
                 var user = new User({
                     oauthID: profile.id,
-                    username: profile.name,
+                    // username: profile.name,
                     displayName: profile.displayName,
                     created: Date.now()
                 });
@@ -96,7 +96,7 @@ passport.use(new GoogleStrategy(env.google,
                         console.log(err);
                     }else{
                         console.log("saving user ...");
-                        done(null, user);
+                        cb(null, user);
                     }
                 });
 

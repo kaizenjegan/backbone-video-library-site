@@ -10,7 +10,7 @@ define([
     var users = Backbone.Collection.extend({
         url: '/users/me',
         model: userModel,
-        current: '',
+        current: {},
         login: function(usr, pwd)
         {
         	var self = this;
@@ -23,8 +23,6 @@ define([
         		success: function(data){
         			self.current = new userModel(userModel);
                     self.trigger('logged_in');
-                    
-
         		},
         		error: function(a, b, c){
         			self.trigger('not_logged_in');
