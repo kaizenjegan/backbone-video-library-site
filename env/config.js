@@ -1,7 +1,7 @@
 var twitterStrategy = {
 	consumerKey: process.env.TwitterKey,
 	consumerSecret: process.env.TwitterSecret,
-	callback: process.env.TwitterCallback
+	callbackURL: process.env.TwitterCallback
 };
 
 var googleStrategy = {
