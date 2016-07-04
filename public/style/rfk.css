@@ -31,9 +31,15 @@
 
 #flix_video{
 	height: 531px;
-    width: 944px;
+  width: 944px;
 }
 
+@media only screen and (max-device-width: 480px) {
+  #flix_video{
+    height: 265px;
+    width: 369px;
+  }
+}
 
 .signup{
   margin-top: 60px;
