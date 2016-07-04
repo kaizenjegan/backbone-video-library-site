@@ -4,6 +4,8 @@ var router = express.Router();
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var env = require('../env/config');
 var userSchema = require('../model/user');
 var User = mongoose.model('User', userSchema);
@@ -19,11 +21,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new TwitterStrategy({
-    consumerKey: env.twitter.consumerKey, //env.config.twitter.consumerKey,
-    consumerSecret: env.twitter.consumerSecret, //'MGdqxBUI0lLoLc7KZYnW0xRNPAfpUL9diWFLU559lA', //env.config.twitter.consumerKey,
-    callbackURL: env.twitter.callback 
-  },
+passport.use(new TwitterStrategy(env.twitter,
    function(token, tokenSecret, profile, done) {    
         console.log('profile');
         console.log('token: ' + token);
@@ -63,18 +61,80 @@ passport.use(new TwitterStrategy({
         });
     }
 ));
+
+
+
+passport.use(new GoogleStrategy(env.google,
+  function(token, tokenSecret, profile, cb) {
+     User.findOne({ oauthID: profile.id }, function(err, user) {
+            if(err) { console.log(err); }
+
+            console.log('\n\n\n\n');
+
+            console.log(profile);
+
+            console.log('\n\n\n\n');
+
+            if (!err && user != null) {
+                cb(null, user);
+            } 
+            else 
+            {
+
+
+                //log where u are authenticating from.
+                //e.g authType: twitter
+                var user = new User({
+                    oauthID: profile.id,
+                    // username: profile.name,
+                    displayName: profile.displayName,
+                    created: Date.now()
+                });
+
+                user.save(function(err) {
+                    if(err) {
+                        console.log(err);
+                    }else{
+                        console.log("saving user ...");
+                        cb(null, user);
+                    }
+                });
+
+            }
+        });
+  }
+));
+
+
+passport.use(new FacebookStrategy(env.facebook,
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 //end implement passport
 
-router.post('/login',
-  passport.authenticate('local', { successRedirect: '/index.html',
+router.post('/login',  passport.authenticate('local', { successRedirect: '/index.html',
                                    failureRedirect: '/login' }));
-
 
 router.get('/twitter', passport.authenticate('twitter'));
 
-router.get('/twitter/callback', 
-  passport.authenticate('twitter', { successRedirect: '/index.html',
-                                     failureRedirect: '/fail' }));
+router.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/index.html',
+                                     failureRedirect: '/fail.html' }));
+
+
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+
+router.get('/google/callback', passport.authenticate('google', { successRedirect: '/index.html',
+                                     failureRedirect: '/fail.html' }));
+
+router.get('/auth/facebook', passport.authenticate('facebook'));
+ 
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/index.html',
+                                     failureRedirect: '/fail.html' }));
+
+
 
 
 module.exports = router;

@@ -4,16 +4,16 @@ define([
     'backbone',
     'compiled_templates',
     'collections/user'
-], function ($, Backbone, Templates) {
+], function ($, Backbone, Templates, User) {
     'use strict';
 
     var HeaderView = Backbone.View.extend({
-        el: '#header',
-        template: Templates['search-results.hbs'],
-        events: {
-            'click #btn-search': 'search',
-            'keydown #search': 'Enter_Pressed'
-        },
+        el: '#video-navigation',
+        template: Templates['navigation.hbs'],
+        // events: {
+        //     'click #btn-search': 'search',
+        //     'keydown #search': 'Enter_Pressed'
+        // },
         initialize: function() {
             this.render();
         },
@@ -22,6 +22,9 @@ define([
                 this.search(null);
             }
 
+        },
+        render: function(){
+            this.$el.html(this.template({name: User.current.displayName}));
         },
         search: function(e) {
             var query = $('#search').val();    

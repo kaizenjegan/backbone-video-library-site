@@ -67,7 +67,7 @@ require([
 	'views/header',
 	'collections/flixDb',
 	'utils/ViewManager',
-	'views/alerts'
+	'views/alerts',
 ], function (Backbone, Workspace, Users, ListView, SignUpView, NavigationBarView, FlixDb, vm, Alerts) {
 	/*jshint nonew:false*/
 
@@ -77,6 +77,8 @@ require([
 	Backbone.View.prototype.close = function(){
 		// this.unbind(); //not working		
 	}
+
+	
 
 	vm.router = new Workspace();
 	Backbone.history.start();

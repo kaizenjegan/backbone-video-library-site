@@ -3,8 +3,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'compiled_templates'
-], function ($, _, Backbone, Templates) {
+    'compiled_templates',
+    'common'
+], function ($, _, Backbone, Templates, common) {
     var ListView = Backbone.View.extend({
         el: '#video-body',
         template: Templates['list-video.hbs'],
@@ -12,32 +13,46 @@ define([
             'click #next': 'next'
         },
         initialize: function() {
-            this.Page = 1;
-            this.Limit = 10;
-
+            common.CURR_PAGE = 1;
+            var self = this;
             if(this.model){
                 this.model.fetch({
                     data: {
-                        page: this.Page,
-                        limit: this.Limit
+                        page: common.CURR_PAGE,
+                        limit: common.PAGE_LIMIT
                     }
                 });
 
                 this.listenTo(this.model, 'add', this.render);
                 this.listenTo(this.model, 'change', this.render);
-                this.listenTo(this.model, 'reset', this.render);                
+                this.listenTo(this.model, 'reset', this.render);    
+
+
+                $(window).scroll(function() {
+                   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                        common.CURR_PAGE += 1;
+
+                        self.model.fetch({
+                            remove:false,
+                            data: {
+                                page: common.CURR_PAGE,
+                                limit: common.PAGE_LIMIT
+                            }
+                        });
+                   }
+                });            
             }
             this.render();
         },
         next: function(e) {
-            this.Page += 1;
+            // common.CURR_PAGE += 1;
 
-            this.model.fetch({
-                data: {
-                    page: this.Page,
-                    limit: this.Limit
-                }
-            });
+            // this.model.fetch({
+            //     data: {
+            //         page: common.CURR_PAGE,
+            //         limit: common.PAGE_LIMIT
+            //     }
+            // });
         },
         render: function() {
             var self = this;
@@ -45,7 +60,7 @@ define([
 
             $(this.el).html(this.template({
                 videos: videos,
-                limit: self.Page
+                limit: common.CURR_PAGE
             }));
         },
         renderSearch: function() {            
@@ -63,6 +78,7 @@ define([
             $(this.el).undelegate('#AddVid', 'click');
             
             this.stopListening(this.model);
+            $(window).unbind('scroll');
         }
 
     });
