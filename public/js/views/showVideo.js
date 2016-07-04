@@ -6,8 +6,9 @@ define([
     'utils/ViewManager',
     'views/deleteVideo',
     'views/alerts',
-    'utils/ViewManager'
-], function($, Backbone, _, Template, vm, deleteVideoView, Alerts, vm){
+    'utils/ViewManager',
+    'common'
+], function($, Backbone, _, Template, vm, deleteVideoView, Alerts, vm, common){
 
     var videoView = Backbone.View.extend({
         el: '#video-body',
@@ -17,6 +18,7 @@ define([
         },
         initialize: function(options) {
             // vm.showView(Alerts);
+            console.log("page: " + common.CURR_PAGE);
             this.alerts = new Alerts();
 
             this.render();

@@ -78,6 +78,8 @@ require([
 		// this.unbind(); //not working		
 	}
 
+	
+
 	vm.router = new Workspace();
 	Backbone.history.start();
 

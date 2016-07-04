@@ -10,7 +10,13 @@ function(Backbone, $, flixDb, common, Template){
 		initialize: function(){
 
 			this.timerId = setInterval(function(){
-				flixDb.fetch();
+				flixDb.fetch({
+                    data: {
+                        page: common.CURR_PAGE,
+                        limit: common.PAGE_LIMIT
+                    }
+                });
+
 				console.log('fetching data');
 			}, common.FLIX_DB_POLL_IN_SEC);
 

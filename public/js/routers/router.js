@@ -6,8 +6,9 @@ define([
 	'views/showVideo',
 	'views/addVideo',
 	'views/list',
-	'utils/ViewManager'
-], function ($, Backbone, FlixDb, VideoView, AddVideoView, ListView, ViewManager) {
+	'utils/ViewManager',
+	'common'
+], function ($, Backbone, FlixDb, VideoView, AddVideoView, ListView, ViewManager, common) {
 	'use strict';
 
 	var AppRouter = Backbone.Router.extend({
@@ -22,7 +23,22 @@ define([
 	    renderVideoView: function(id){
 	    	var video = FlixDb.get(id);
 
-			ViewManager.showView(VideoView, {model: video});
+	    	if(video) {
+	    		ViewManager.showView(VideoView, {model: video});
+	    	}else{
+	    		function showVid(){
+	    			video = FlixDb.get(id);
+	    			ViewManager.showView(VideoView, {model: video});	
+	    		}
+	    		
+	    		this.listenToOnce(FlixDb, "add", showVid);
+
+	    		FlixDb.fetch();
+
+
+	    	}
+
+			
 	    },
 	    addVideo: function(){
 	    	ViewManager.showView(AddVideoView);
