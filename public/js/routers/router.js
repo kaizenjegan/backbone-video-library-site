@@ -23,19 +23,16 @@ define([
 	    renderVideoView: function(id){
 	    	var video = FlixDb.get(id);
 
+	    	function showVid(){
+    			video = FlixDb.get(id);
+    			ViewManager.showView(VideoView, {model: video});	
+    		}
+
 	    	if(video) {
 	    		ViewManager.showView(VideoView, {model: video});
 	    	}else{
-	    		function showVid(){
-	    			video = FlixDb.get(id);
-	    			ViewManager.showView(VideoView, {model: video});	
-	    		}
-	    		
 	    		this.listenToOnce(FlixDb, "add", showVid);
-
 	    		FlixDb.fetch();
-
-
 	    	}
 
 			
