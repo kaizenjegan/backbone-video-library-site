@@ -24,7 +24,13 @@ define([
 
         },
         render: function(){
-            this.$el.html(this.template({name: User.current.displayName}));
+            var isAdmin = (User.current.role == "admin")?true: false;
+
+            this.$el.html(this.template({
+                                name: User.current.displayName,
+                                isAdmin: isAdmin
+                            })
+                        );
         },
         search: function(e) {
             var query = $('#search').val();    

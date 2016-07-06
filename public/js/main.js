@@ -64,7 +64,7 @@ require([
 	'collections/user',
 	'views/list',
 	'views/loggedOut',
-	'views/header',
+	'views/navigation',
 	'collections/flixDb',
 	'utils/ViewManager',
 	'views/alerts',

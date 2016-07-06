@@ -13,6 +13,7 @@ define([
             "displayName": "",
             "createdDateTime": "",
             "role": "",
+            "isApproved": "",
             "__v": 0
         },
         idAttribute: '_id'

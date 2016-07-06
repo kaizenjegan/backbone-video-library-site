@@ -27,13 +27,15 @@ define([
         render: function(id) {
             var isAdmin = false;
 
-            if(User.current)
+            if(User.current.role == "admin"){
+                isAdmin = true;
+            }
 
 
             $(this.el).html(
                 this.template({
                     video: this.model.toJSON(),
-                    isAdmin:
+                    isAdmin: isAdmin
                 })
             );
         },
@@ -47,4 +49,5 @@ define([
     });
 
     return videoView;
-})
+});
+

@@ -14,8 +14,9 @@ define([
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
 	    	'home': 'home',
-	        "view/:id": "renderVideoView",	  
-	        'addVideo': "addVideo"
+	        "view/:id": 'renderVideoView',	  
+	        'addVideo': 'addVideo',
+	        'users': 'users'
 	    },
 	    home: function(){
       		ViewManager.showView(ListView, {model: FlixDb});
@@ -36,9 +37,10 @@ define([
 	    		FlixDb.fetch();
 
 
-	    	}
-
-			
+	    	}	
+	    },
+	    users: function() {
+	    	
 	    },
 	    addVideo: function(){
 	    	ViewManager.showView(AddVideoView);
