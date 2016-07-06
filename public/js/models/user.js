@@ -12,6 +12,7 @@ define([
             "username": "",
             "displayName": "",
             "createdDateTime": "",
+            "role": "",
             "__v": 0
         },
         idAttribute: '_id'

@@ -63,12 +63,12 @@ require([
 	'routers/router',
 	'collections/user',
 	'views/list',
-	'views/not-logged-in',
+	'views/loggedOut',
 	'views/header',
 	'collections/flixDb',
 	'utils/ViewManager',
 	'views/alerts',
-], function (Backbone, Workspace, Users, ListView, SignUpView, NavigationBarView, FlixDb, vm, Alerts) {
+], function (Backbone, Workspace, Users, ListView, loggedOutView, NavigationBarView, FlixDb, vm, Alerts) {
 	/*jshint nonew:false*/
 
 	Backbone.View.prototype.initialize = function(){
@@ -78,14 +78,10 @@ require([
 		// this.unbind(); //not working		
 	}
 
-	
-
 	vm.router = new Workspace();
 	Backbone.history.start();
 
 	Users.isLoggedIn();
-
-	// new Alerts();
 
     Users.on('logged_in', function(){
         $('#header').show();
@@ -99,6 +95,8 @@ require([
     Users.on('not_logged_in', function()
     {        
         $('#header').hide();
-        vm.showView(SignUpView);
+        vm.showView(loggedOutView);
+
+        console.log('not logged in');
     });
 });

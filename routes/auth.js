@@ -108,8 +108,41 @@ passport.use(new GoogleStrategy(env.google,
 
 passport.use(new FacebookStrategy(env.facebook,
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
+    User.findOne({oauthID: profile.id }, function (err, user) {
+        if(err) { console.log(err); }
+
+        console.log('\n\n\n\n');
+
+        console.log(profile);
+
+        console.log('\n\n\n\n');
+
+        if (!err && user != null) {
+            cb(null, user);
+        } 
+        else 
+        {
+
+
+            //log where u are authenticating from.
+            //e.g authType: twitter
+            var user = new User({
+                oauthID: profile.id,
+                // username: profile.name,
+                displayName: profile.displayName,
+                created: Date.now()
+            });
+
+            user.save(function(err) {
+                if(err) {
+                    console.log(err);
+                }else{
+                    console.log("saving user ...");
+                    cb(null, user);
+                }
+            });
+
+        }
     });
   }
 ));

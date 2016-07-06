@@ -29,7 +29,7 @@ define([
         		}
         	});
         },
-        signup: function(usr, pwd, confirmPwd)
+        signup: function(displayName, usr, pwd, confirmPwd)
         {
         	var self = this;
         	
@@ -37,8 +37,10 @@ define([
         		url: 'users/signup',
         		type: 'POST',
         		contentType: 'application/json',
-        		data: JSON.stringify({username: usr, password: pwd}),
+        		data: JSON.stringify({displayName: displayName, username: usr, password: pwd}),
         		success: function(data){
+                    console.log('login successful');
+                    // self.current = new userModel(userModel);
         			// self.trigger('logged_in');
         		},
         		error: function(a, b, c){

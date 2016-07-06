@@ -34,14 +34,14 @@ router.get('/logout', env.isAuthenticated, function(req, res, next){
 });
 
 router.post('/signup', function(req, res, next){
-	var displayname = req.body.displayname;
+	var displayName = req.body.displayName;
 	var username = req.body.username;
 	var password = req.body.password;
 
 	var user = new User({
 		username: username,
 		password:password,
-		displayName: displayname
+		displayName: displayName
 	});
 
 	user.save(function(err, u)

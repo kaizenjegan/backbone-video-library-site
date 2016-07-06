@@ -7,8 +7,9 @@ define([
     'views/deleteVideo',
     'views/alerts',
     'utils/ViewManager',
-    'common'
-], function($, Backbone, _, Template, vm, deleteVideoView, Alerts, vm, common){
+    'common',
+    'collections/user'
+], function($, Backbone, _, Template, vm, deleteVideoView, Alerts, vm, common, User){
 
     var videoView = Backbone.View.extend({
         el: '#video-body',
@@ -24,9 +25,15 @@ define([
             this.render();
         },
         render: function(id) {
+            var isAdmin = false;
+
+            if(User.current)
+
+
             $(this.el).html(
                 this.template({
-                    video: this.model.toJSON()
+                    video: this.model.toJSON(),
+                    isAdmin:
                 })
             );
         },

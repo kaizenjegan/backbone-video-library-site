@@ -7,6 +7,7 @@ var usersSchema = new mongoose.Schema({
     ,displayName: String
     ,createdBy: Number
     ,createdDateTime: { type: Date, default: Date.now }
+    ,role: {type: String, default: 'normal'}
 });
 
 
