@@ -33,6 +33,12 @@ router.get('/logout', env.isAuthenticated, function(req, res, next){
 	res.redirect('/');
 });
 
+router.get('/', env.isAuthenticated, function(req, res, next) {
+	User.find({}, function(err, u){
+		res.status(200).send(u);
+	}).lean();
+});
+
 router.post('/signup', function(req, res, next){
 	var displayName = req.body.displayName;
 	var username = req.body.username;
@@ -59,7 +65,7 @@ router.post('/signup', function(req, res, next){
 });
 
 router.post('/login',  passport.authenticate('local'), function(req, res){
-	res.status(200).send('logged in');
+	res.status(200).send(req.user);
 });
 
 

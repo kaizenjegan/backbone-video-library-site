@@ -1,0 +1,21 @@
+<table id="users">
+	<tr>
+		<th>username</th>
+		<th>displayName</th>
+		<th>created on</th>
+		<th>role</th>
+		<th>approved</th>
+	</tr>
+<tbody>
+	{{#each users}}
+	<tr>
+		<td> {{username}} </td>
+		<td> {{displayName}} </td>
+		<td> {{createdDateTime}} </td>
+		<td> {{role}} </td>
+		<td> {{isApproved}} </td>
+	</tr>
+	{{/each}}
+</tbody>
+
+</table>

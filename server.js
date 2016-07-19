@@ -38,7 +38,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'flix_and_chill_UI')));
+app.use(express.static(path.join(__dirname, 'flix_and_chill_admin')));
 
 app.use(session({ secret: 'topsecret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
