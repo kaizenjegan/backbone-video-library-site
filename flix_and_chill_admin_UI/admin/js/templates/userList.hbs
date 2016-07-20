@@ -1,0 +1,26 @@
+<table id="users">
+	<tr>
+		<th>username</th>
+		<th>displayName</th>
+		<th>created on</th>
+		<th>role</th>
+		<th>approved</th>
+	</tr>
+<tbody>
+	{{#each users}}
+	<tr>
+		<td> {{username}} </td>
+		<td> {{displayName}} </td>
+		<td> {{createdDateTime}} </td>
+		<td> {{role}} </td>
+
+		{{#if isApproved}}
+			<td>  <input data-id="{{_id}}" type="checkbox" class="approval" checked> </td>
+		{{else}}
+			<td>  <input data-id="{{_id}}" type="checkbox" class="approval"> </td>
+		{{/if}}
+	</tr>
+	{{/each}}
+</tbody>
+
+</table>
