@@ -4,12 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var video = require('./routes/video');
-var cool = require('./routes/cool');
+var download = require('./routes/download');
 var session = require('express-session');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
@@ -39,7 +37,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'flix_and_chill_UI')));
-app.use(express.static(path.join(__dirname, 'flix_and_chill_admin')));
+app.use(express.static(path.join(__dirname, 'flix_and_chill_admin_UI')));
 
 app.use(session({ secret: 'topsecret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
@@ -48,13 +46,10 @@ app.use(passport.session());
 
 
 
-
-
-app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/video', video);
-app.use('/api/cool', cool);
+app.use('/download', download);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
