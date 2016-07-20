@@ -33,10 +33,10 @@ router.get('/logout', env.isAuthenticated, function(req, res, next){
 	res.redirect('/');
 });
 
-router.get('/', env.isAuthenticated, function(req, res, next) {
+router.get('/', env.isAuthorized, function(req, res, next) {
 	User.find({}, function(err, u){
 		res.status(200).send(u);
-	}).lean();
+	}).lean();	
 });
 
 router.post('/signup', function(req, res, next){
@@ -63,6 +63,22 @@ router.post('/signup', function(req, res, next){
 	});
 
 });
+
+router.put("/:id", env.isAuthorized, function(req, res, next){
+
+	User.findOne({_id: req.body._id}, function(err, u){
+		if(!err){
+			u.isApproved = req.body.isApproved;
+
+			u.save(function(u){
+				res.status(200).send(u);
+			});
+		}
+	});
+
+});
+
+
 
 router.post('/login',  passport.authenticate('local'), function(req, res){
 	res.status(200).send(req.user);

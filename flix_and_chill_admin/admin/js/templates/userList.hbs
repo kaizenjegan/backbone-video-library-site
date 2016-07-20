@@ -13,7 +13,12 @@
 		<td> {{displayName}} </td>
 		<td> {{createdDateTime}} </td>
 		<td> {{role}} </td>
-		<td> {{isApproved}} </td>
+
+		{{#if isApproved}}
+			<td>  <input data-id="{{_id}}" type="checkbox" class="approval" checked> </td>
+		{{else}}
+			<td>  <input data-id="{{_id}}" type="checkbox" class="approval"> </td>
+		{{/if}}
 	</tr>
 	{{/each}}
 </tbody>

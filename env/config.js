@@ -28,6 +28,13 @@ var config = {
 		 }
 		console.log('is not isAuthenticated');
 		res.status(401).send({'statusCode': '-1'})
+	},
+	isAuthorized: function(req, res, next){
+		if(req.user.role === "admin"){
+			return next();
+		}
+
+		res.status(401).send({'message': 'you are not authorized'});
 	}
 };
 module.exports = config;
