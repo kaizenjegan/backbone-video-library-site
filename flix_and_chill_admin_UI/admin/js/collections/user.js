@@ -3,12 +3,13 @@
 define([
     'underscore',
     'backbone',
-    'models/user'
-], function (_, Backbone, userModel) {
+    'models/user',
+    'env/settings'
+], function (_, Backbone, userModel, Settings) {
     'use strict';
     var url = "http://localhost:3000/"
     var users = Backbone.Collection.extend({
-        url: '/users',
+        url: Settings.flix_api_url +  '/users',
         model: userModel,
         current: {},
         login: function(usr, pwd)

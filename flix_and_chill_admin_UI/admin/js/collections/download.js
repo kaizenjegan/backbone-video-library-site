@@ -1,12 +1,10 @@
-define(['jquery', 'backbone', 'models/download'], 
-	function($, Backbone, downloadModel){
+define(['jquery', 'backbone', 'models/download', 'env/settings'], 
+	function($, Backbone, downloadModel, Settings){
 		'use strict'
 		
-		var flixUrl = "http://localhost:3000/";
-
 		var downloads = Backbone.Collection.extend({
 			model: downloadModel,
-			url: flixUrl + 'download'
+			url: Settings.flix_api_url + '/download'
 		});
 
 

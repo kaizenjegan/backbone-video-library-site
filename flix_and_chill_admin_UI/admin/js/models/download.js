@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone){
+define(['backbone', 'env/settings'], function(Backbone, Settings){
 	
 	var flixUrl = "http://localhost:3000/";
 
@@ -19,7 +19,7 @@ define(['backbone'], function(Backbone){
 			"__v": 0
 		},
 		idAttribute: '_id',
-		url: flixUrl + 'download'
+		url: Settings.flix_api_url + 'download'
 	});
 
 	return downloadModel;
