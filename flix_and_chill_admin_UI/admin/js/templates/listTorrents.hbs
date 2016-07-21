@@ -1,5 +1,36 @@
-torrents:
+<table class="torrents">
+	<tr>
+		<th> Status </th>
+		<th> Name </th>	
+		<th> Size (GB) </th>
+		<th> Seeds </th>
+		<th> Peers </th>
+		<th> Download Speed </th>
+		<th> Upload Speed </th>
+		<th> ETA </th>
+		<th> Added</th>
+		<th> Completed </th>
+		<th> Magnet Uri </th>	
+	</tr>
+<tbody>
+	{{#each torrents}}
+	<tr>
+		<td class="status"> 
+			<div data-id="{{_id}}" data-name="{{name}}" class="status">{{status}}</div>
+			{{#getPlayButton}} {{status}} {{/getPlayButton}}
+		</td>
+		<td> {{name}} </td>
+		<td> {{size_in_GB}} </td>
+		<td> {{seeds}} </td>
+		<td> {{peers}} </td>
+		<td> {{downloadSpeed}} </td>
+		<td> {{uploadSpeed}} </td>
+		<td> {{eta}} </td>
+		<td> {{added_on}} </td>
+		<td> {{completed_on}} </td>
+		<td ="uri"> <span class="field"> {{magnetUri}} </span> </td>
+	</tr>
+	{{/each}}
+</tbody>
 
-{{#each torrents}}
-	{{name}} | {{magnetUri}} </br>
-{{/each}}
+</table>

@@ -69,6 +69,11 @@ require([
 ], function (Backbone, Workspace, vm, Users, loginView, NavigationBarView, userList) {
 	/*jshint nonew:false*/
 
+	Handlebars.registerHelper('getPlayButton', function(options) {
+	  return options.fn(this);
+	});
+
+
 	Backbone.View.prototype.initialize = function(){
 		// this.stopListening();
 	}
@@ -86,7 +91,8 @@ require([
          
         new NavigationBarView();
 
-        vm.showView(userList);
+        // vm.showView(userList);
+         vm.router.navigate("users", {trigger: true});
 
         console.log('not logged in');
     });

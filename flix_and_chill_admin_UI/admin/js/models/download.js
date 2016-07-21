@@ -1,10 +1,12 @@
 define(['backbone'], function(Backbone){
 	
+	var flixUrl = "http://localhost:3000/";
+
 	var downloadModel = Backbone.Model.extend({
 		defaults: {
-			'_id': '',
+			// '_id': '',
 			'magnetUri': '',
-			'name': '',
+			'name': 'Untitled Unmastered',
 			'size_in_GB': '',
 			'status': '',
 			'seeds': '',
@@ -16,7 +18,8 @@ define(['backbone'], function(Backbone){
 			'completed_on': '',
 			"__v": 0
 		},
-		idAttribute: '_id'
+		idAttribute: '_id',
+		url: flixUrl + 'download'
 	});
 
 	return downloadModel;

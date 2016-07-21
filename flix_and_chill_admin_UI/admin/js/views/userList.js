@@ -22,18 +22,22 @@ define(['jquery', 'backbone', 'compiled_templates', 'collections/user'],
 				userModel.set({isApproved: isApproved});
 
 				userModel.save({
-					success:function(a, b, c){
-						console.log("success");
-					},
-					error: function(a, b, c){
-						console.log("fail");
-					}
-				});
+					success:function(model, response){
+						    // vm.router.navigate("listTorrents", {trigger: true});
+						    console.log("successfully approved user")
+						  },
+						  error: function(){
+						    console.log('error approving users');
+						  }
+					});
 			},
 			render: function(){
 				$(this.el).html(
 					this.template({users: Users.toJSON()})
 					);
+			},
+			close: function(){
+				this.stopListening();
 			}
 		});
 

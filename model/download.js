@@ -2,15 +2,15 @@ var mongoose = require('mongoose');
 
 
 var downloadSchema = new mongoose.Schema({
-	magnetUri: {type: String, default: ''},
-	name: {type: String, default: ''},
+	magnetUri: String,
+	name: String,
 	size_in_GB: {type: Number, default: 0},
-	status: {type: String, default: ''},
-	seeds: {type: Number, default: 0},
-	peers: {type: Number, default: 0},
-	downloadSpeed: {type: Number, default: 0},
-	uploadSpeed: {type: Number, default: 0},
-	eta: {type: Date, default: Date.now},
+	status: {type: String, default: 'stopped'},
+	seeds: String,
+	peers: String,
+	downloadSpeed: String,
+	uploadSpeed: String,
+	eta: Date,
 	added_on: {type: Date, default: Date.now},
 	completed_on: {type: Date, default: Date.now}
 });

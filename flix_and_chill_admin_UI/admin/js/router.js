@@ -11,21 +11,18 @@ define([
 
 	var AppRouter = Backbone.Router.extend({
 	    routes: {
-	    	'home': 'home',
+	    	'user': 'users',
 	        'addTorrent': 'AddTorrent',
 	        'listTorrents': 'ListTorrents',
 	        'users': 'users'
 			// "*action": "home"
 	    },
-	    home: function(){
+	    users: function(){
       		vm.showView(UserListView);
 	    },
 	    AddTorrent: function(){
 	    	// console.log("add torrent");
 	    	vm.showView(AddTorrentView);
-	    },
-	    users: function() {
-	    	
 	    },
 	    addVideo: function(){
 	    	// ViewManager.showView(AddVideoView);

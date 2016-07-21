@@ -8,3 +8,20 @@
 #users th, td{
 	border: 1px solid black;
 }
+
+#torrents td{
+	
+}
+
+.field {
+	width: 15px;
+	text-overflow: ellipsis;
+}
+
+.uri {
+	width: 10%;
+}
+
+td.status{
+	cursor: pointer;
+}

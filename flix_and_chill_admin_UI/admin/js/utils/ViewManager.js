@@ -1,5 +1,6 @@
-define([], function(){
+define(['router'], function(Workspace){
 	return {
+		router: {},
 		showView: function(View, params){
 			if(this.currentView){
 				this.currentView.close();

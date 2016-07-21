@@ -1,3 +1,5 @@
+
+
 var should = require("should"); 
 var chai = require('chai').use(require('chai-as-promised'));
 var expect = chai.expect;
@@ -60,3 +62,5 @@ describe('Test API', function () {
     
   });
 });
+
+db.users.insert({username: 'sa', password: "ch@ng3", role: "admin", createdDateTime: "2016-07-20T01:30:54.801Z", displayName: "administrator"});

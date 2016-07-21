@@ -27,5 +27,13 @@ router.post('/', env.isAuthorized, function(req, res, next){
 	});
 });
 
+router.put('/', env.isAuthorized, function(req, res, next){	
+	
+	Download.update({_id: req.body._id}, {status: req.body.status}, function(err, d){
+		if(!err){
+			res.send(d);
+		}
+	});
+});
 
 module.exports = router;
