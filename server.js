@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var video = require('./routes/video');
-var download = require('./routes/download');
+var queue = require('./routes/queue');
 var session = require('express-session');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
@@ -16,6 +16,13 @@ var mongoose = require('mongoose');
 var app = express();
 var env;
 var config = env = require('./env/config');
+var redis = require('redis');
+var client = redis.createClient();
+
+
+client.on('connect', function() {
+    console.log('connected');
+});
 
 mongoose.connect(config.mongooseURL);
 mongoose.set('debug', true);
@@ -49,7 +56,7 @@ app.use(passport.session());
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/video', video);
-app.use('/download', download);
+app.use('/queue', queue);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

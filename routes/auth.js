@@ -10,8 +10,6 @@ var env = require('../env/config');
 var userSchema = require('../model/user');
 var User = mongoose.model('User', userSchema);
 
-
-
 //Implement passport
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -28,7 +26,6 @@ passport.use(new TwitterStrategy(env.twitter,
         console.log('tokenSecret: ' + tokenSecret);
         console.log('profile: ' + profile);
         console.log('done: ' + done);
-
 
         //todo: if twitter profile change, update
         User.findOne({ oauthID: profile.id }, function(err, user) {
@@ -80,8 +77,6 @@ passport.use(new GoogleStrategy(env.google,
             } 
             else 
             {
-
-
                 //log where u are authenticating from.
                 //e.g authType: twitter
                 var user = new User({
@@ -99,7 +94,6 @@ passport.use(new GoogleStrategy(env.google,
                         cb(null, user);
                     }
                 });
-
             }
         });
   }
@@ -122,8 +116,6 @@ passport.use(new FacebookStrategy(env.facebook,
         } 
         else 
         {
-
-
             //log where u are authenticating from.
             //e.g authType: twitter
             var user = new User({

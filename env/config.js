@@ -27,7 +27,7 @@ var config = {
 		 	return next(); 
 		 }
 		console.log('is not isAuthenticated');
-		res.status(401).send({'statusCode': '-1'})
+		res.status(401).send({'message': 'you are not authorized'});
 	},
 	isAuthorized: function(req, res, next){
 		if(req.user.role === "admin"){
@@ -35,6 +35,15 @@ var config = {
 		}
 
 		res.status(401).send({'message': 'you are not authorized'});
-	}
+	},
+	isApproved: function(req, res, next){
+		console.log(req.user);
+		if(req.user.isApproved || req.user.role ==='admin'){
+			return next();
+		}
+
+		console.log('is not isApproved');
+		res.status(401).send({'message': 'you are not authorized'});
+	}	
 };
 module.exports = config;

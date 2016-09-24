@@ -1,10 +1,9 @@
-define(['jquery', 'backbone', 'compiled_templates', 'models/download', 'utils/ViewManager'], 
-	function($, Backbone, Template, downloadModel, vm){
+define(['jquery', 'backbone', 'compiled_templates', 'models/queue', 'collections/queue', 'utils/ViewManager'], 
+	function($, Backbone, Template, downloadModel, Q, vm){
 
 		var addTorrent = Backbone.View.extend({
 			el: '#admin-body',
 			template: Template['addTorrent.hbs'],
-			'keypressed #magnetURI': 'addTorrent',
 			events: {
 				'keypress #magnetURI': 'addTorrent'
 			},
@@ -14,29 +13,32 @@ define(['jquery', 'backbone', 'compiled_templates', 'models/download', 'utils/Vi
 			addTorrent: function(e){
 				console.log('key pressed');
 				var uri = $(e.currentTarget).val();
-
+				var self = this;
 				//enter
 				if(e.keyCode ===13 ){
 					var download = new downloadModel({
 						magnetUri: uri
 					});
 
-
-					download.save(null, {
-						success:function(model, response){
-						    vm.router.navigate("listTorrents", {trigger: true});
-						  },
-						  error: function(){
-						    console.log('error download');
-						  }
+					Q.create(download, {
+						type: 'POST',
+						success: function(a, b, c){
+							console.log('success');
+							vm.router.navigate("listTorrents", {trigger: true});
+						},
+						error: function(err){
+							console.log('err')
+						}
 					});
+
 				}
 			},
 			render: function(){
 				this.$el.html(this.template());
 			},
 			close: function(){
-				// this.stopListening();
+				console.log('closing')
+				this.stopListening();
 				$(this.el).undelegate('#magnetURI', 'keypress');
 
 			}

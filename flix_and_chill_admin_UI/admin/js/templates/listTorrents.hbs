@@ -1,6 +1,7 @@
 <table class="torrents table">
 	<caption>Table to do torrent stuff</caption>
 	<tr>
+		<th>  </th>
 		<th> Status </th>
 		<th> Name </th>	
 		<th> Size (GB) </th>
@@ -16,6 +17,9 @@
 <tbody>
 	{{#each torrents}}
 	<tr>
+		<td class="delete" data-id="{{_id}}"> 
+			<div style="color:red"> X </div> 
+		</td>
 		<td class="status"> 
 			<div data-id="{{_id}}" data-name="{{name}}" class="status">{{status}}</div>
 			{{#getPlayButton}} {{status}} {{/getPlayButton}}
@@ -29,7 +33,7 @@
 		<td> {{eta}} </td>
 		<td> {{added_on}} </td>
 		<td> {{completed_on}} </td>
-		<td ="uri"> <span class="field"> {{magnetUri}} </span> </td>
+		<td ="uri"> <div class="field"> {{magnetUri}} </div> </td>
 	</tr>
 	{{/each}}
 </tbody>

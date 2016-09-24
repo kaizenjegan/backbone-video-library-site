@@ -15,6 +15,7 @@ var fs = require('fs');
 var privateKey  = fs.readFileSync('./bin/sslcert/key.pem', 'utf8');
 var certificate = fs.readFileSync('./bin/sslcert/server.crt', 'utf8');
 
+
 var credentials = {key: privateKey, cert: certificate};
 
 /**
@@ -30,6 +31,16 @@ app.set('port', port);
 
 var server = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
+// var io = require('socket.io')(server);
+
+
+// io.on('connection', function (socket) {
+//   console.log('io connected');
+//   socket.emit('news', { hello: 'world' });
+//   socket.on('my other event', function (data) {
+//     console.log(data);
+//   });
+// });
 
 /**
  * Listen on provided port, on all network interfaces.

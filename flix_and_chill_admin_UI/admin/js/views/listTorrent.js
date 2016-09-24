@@ -1,15 +1,17 @@
-define(['jquery', 'backbone', 'compiled_templates', 'collections/download', 'models/download'], 
+define(['jquery', 'backbone', 'compiled_templates', 'collections/queue', 'models/queue'], 
 	function($, Backbone, Template, Downloads, DownloadModel){
 	var viewTorrent = Backbone.View.extend({
 		el: '#admin-body',
 		template: Template['listTorrents.hbs'],
 		events: {
-			'click .status': 'toggleDownload'
+			'click .status': 'toggleDownload',
+			'click .delete': 'deleteTorrent'
 		},
 		initialize: function(){
 			Downloads.fetch();
-			this.listenTo(Downloads, 'add', this.render);
-			this.listenTo(Downloads, 'change', this.render);
+			// this.listenTo(Downloads, 'add', this.render);
+			// this.listenTo(Downloads, 'change', this.render);
+			this.listenTo(Downloads, 'destroy', this.render);
 			this.render();
 		},
 		render: function(){
@@ -46,8 +48,17 @@ define(['jquery', 'backbone', 'compiled_templates', 'collections/download', 'mod
 			})
 
 		},
+		deleteTorrent: function(e){
+			var id = $(e.currentTarget).data('id');
+			var download = Downloads.get(id);
+
+			download.destroy();
+
+		},
 		close: function(){
+			this.stopListening();
 			$(this.el).undelegate('.status', 'keypress');
+			$(this.el).undelegate('.delete', 'click');
 		}
 
 	});

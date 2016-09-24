@@ -1,0 +1,26 @@
+<script src="http://localhost/socket.io/socket.io.js"></script>
+<!-- <script src="/socket.io-client/saocket.io.js"></script> -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script>
+  var socket = io('http://localhost:3000');
+
+  socket.on('msg', function (data) {
+    console.log(data);
+    // socket.emit('my other event', { my: 'data' });
+  });
+  
+ //  $(document).ready(function(){
+	// socket.on('time remaining', function (data) {
+	// 	console.log(data);
+	// });
+
+  
+ //  	// $('#status').text("23");
+ //  });
+  
+
+</script>
+
+
+<p>test</p>
+<div id="status"> </div>

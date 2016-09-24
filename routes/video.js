@@ -5,18 +5,10 @@ var videoSchema = require('../model/video');
 var Video = mongoose.model('Video', videoSchema);
 var config = require('../env/config');
 
-
-router.get('/test', function(req, res, next){
-    res.send([{ name : 'john'},
-                {name: 'jane'},
-                {name: 'jack'}]);
-})
-
-router.get('/',  config.isAuthenticated, function(req, res, next) {
+router.get('/',  config.isAuthenticated, config.isApproved, function(req, res, next) {
 	var limit = parseInt(req.query.limit);
 	var page = parseInt(req.query.page);
     var title = req.query.title;
-
 
     if(title)
     {
@@ -47,7 +39,7 @@ router.get('/',  config.isAuthenticated, function(req, res, next) {
     }
 });
 
-router.get('/:movieName',function(req, res, next){
+router.get('/:movieName', config.isApproved, function(req, res, next){
     var title = req.params.movieName;
     
     Video.find({title: new RegExp(title)} , function(err, v) {
@@ -61,7 +53,7 @@ router.get('/:movieName',function(req, res, next){
     });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', config.isApproved, function(req, res, next) {
     var name = req.body.title;
     var cover = req.body.cover;
     var url = req.body.url;
@@ -79,7 +71,7 @@ router.post('/', function(req, res, next) {
     });
 });
 
-router.delete('/:id', function(req, res, next){
+router.delete('/:id', config.isAuthorized, function(req, res, next){
     var id = req.params.id;
 
     Video.remove({_id: id}, function(err){
