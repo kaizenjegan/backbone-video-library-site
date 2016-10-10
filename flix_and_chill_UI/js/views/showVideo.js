@@ -6,10 +6,9 @@ define([
     'utils/ViewManager',
     'views/deleteVideo',
     'views/alerts',
-    'utils/ViewManager',
     'common',
     'collections/user'
-], function($, Backbone, _, Template, vm, deleteVideoView, Alerts, vm, common, User){
+], function($, Backbone, _, Template, vm, deleteVideoView, Alerts, common, User){
 
     var videoView = Backbone.View.extend({
         el: '#video-body',
@@ -35,7 +34,8 @@ define([
             $(this.el).html(
                 this.template({
                     video: this.model.toJSON(),
-                    isAdmin: isAdmin
+                    isAdmin: isAdmin,
+                    videoServer: 'http://localhost:3001'
                 })
             );
         },

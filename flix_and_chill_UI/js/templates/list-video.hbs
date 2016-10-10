@@ -1,17 +1,17 @@
 <div class="row">
- {{#each videos}}          
+ {{#each videos}}
     <div class="card">
-	    <a href="#/view/{{_id}}">  
-	    {{#if cover}}  
-	        <img src="{{cover}}" class='poster'/>	
-	    {{else}}       
-	    	<img src="img/placeholder.png" class='poster'/>	
+	    <a href="#/view/{{_id}}">
+	    {{#if cover}}
+	        <img src="{{cover}}" class='poster'/>
+	    {{else}}
+	    	<img src="img/placeholder.png" class='poster'/>
 	    {{/if}}
-	    </a>    
-		<p> {{title}}</p>    
+	    </a>
+		<p> {{name}}</p>
     </div>
 {{/each}}
 </div>
 <div>
-<!--span id="next">Page {{limit}} </span--> 
+<!--span id="next">Page {{limit}} </span-->
 </div>

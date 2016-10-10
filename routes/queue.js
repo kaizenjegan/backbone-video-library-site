@@ -2,13 +2,16 @@ var express = require('express');
 var router = express.Router();
 var env = require('../env/config');
 var mongoose = require('mongoose');
+var fileInfoSchema = require('../model/file.info.js');
+// var fileinfo = mongoose.model('fileinfo', fileInfoSchema, 'fileinfo');
 var queueSchema = require('../model/queue');
-var Download = require('../model/torrent');
+var Torrent = require('../model/torrent');
 var redis = require('redis');
 var client = redis.createClient();
 
+
 router.get('/', env.isAuthorized,  function(req, res, next){
-	Download.find({}, function(err, q){
+	Torrent.find({}, function(err, q){
 		if(!err){
 			console.log("getting torrent " + q.name);
 
@@ -20,11 +23,11 @@ router.get('/', env.isAuthorized,  function(req, res, next){
 
 			res.status(200).send(q);
 		}
-	});
+	}).populate('_fileinfo');
 });
 
 router.post('/', env.isAuthorized, function(req, res, next){
-	var queue = new Download({
+	var queue = new Torrent({
 		magnetUri: req.body.magnetUri,
 		name: req.body.name
 	});
@@ -37,7 +40,7 @@ router.post('/', env.isAuthorized, function(req, res, next){
 });
 
 router.put('/', env.isAuthorized, function(req, res, next){
-	Download.update({_id: req.body._id}, {status: req.body.status}, function(err, d){
+	Torrent.update({_id: req.body._id}, {action: req.body.status}, function(err, d){
 
 		if(!err){
 			res.send(d);
@@ -48,7 +51,7 @@ router.put('/', env.isAuthorized, function(req, res, next){
 router.delete('/:id', env.isAuthorized, function(req, res, next){
 	console.log(req.body);
 	console.log(req.params._id)
-	Download.remove({_id: req.params.id}, function(err, d){
+	Torrent.remove({_id: req.params.id}, function(err, d){
 		if(!err){
 			res.send(d);
 		}

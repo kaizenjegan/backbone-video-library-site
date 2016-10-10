@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var videoSchema = require('../model/video');
 var Video = mongoose.model('Video', videoSchema);
 var config = require('../env/config');
+var FileInfo = require('../model/file.info.js');
 
 router.get('/',  config.isAuthenticated, config.isApproved, function(req, res, next) {
 	var limit = parseInt(req.query.limit);
@@ -22,18 +23,26 @@ router.get('/',  config.isAuthenticated, config.isApproved, function(req, res, n
             }
         });
     }else{
-        Video.find({}, function(err, v) {
-            if (err) {
-                res.send(err);
-            }
+        // Video.find({}, function(err, v) {
+        //     if (err) {
+        //         res.send(err);
+        //     }
 
-            if (v) {
-                res.send(v);
-            }
-        }).skip((page - 1) * limit).limit(limit);    
+        //     if (v) {
+        //         res.send(v);
+        //     }
+        // }).skip((page - 1) * limit).limit(limit);
+      FileInfo.find({}, function (err, f) {
+        if (err) {
+          res.send(err);
+        }
+
+        if (f) {
+          res.send(f);
+        }
+      }).skip((page - 1) * limit).limit(limit);
     }
 
-    
     var callback = function(err, v){
 
     }
@@ -41,7 +50,7 @@ router.get('/',  config.isAuthenticated, config.isApproved, function(req, res, n
 
 router.get('/:movieName', config.isApproved, function(req, res, next){
     var title = req.params.movieName;
-    
+
     Video.find({title: new RegExp(title)} , function(err, v) {
         if (err) {
             res.send(err);

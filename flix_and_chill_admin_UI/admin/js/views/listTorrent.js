@@ -29,11 +29,11 @@ define(['jquery', 'backbone', 'compiled_templates', 'collections/queue', 'models
 			var download = Downloads.get(id);
 
 			switch(status){
-				case 'stopped':
-					status = "started";
+				case 'stop':
+					status = "start";
 					break;
-				case "started":
-					status = "stopped";
+				case "start":
+					status = "stop";
 					break;
 			}
 			download.set({status: status});

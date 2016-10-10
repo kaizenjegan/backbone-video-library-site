@@ -5,11 +5,14 @@ define([
 ], function (_, Backbone) {
     var videoModel = Backbone.Model.extend({
         defaults: {
-            '_id': '',
-            'title': '',
-            'description': '',
-            'cover': '',
-            'url': ''
+          '_id': '',
+          'name': '',
+          'displayName': '',
+          'description': '',
+          'location': '',
+          'status': '',
+          'size': '',
+          'type': ''
         },
         idAttribute: '_id',
         initialize: function() {
@@ -18,4 +21,14 @@ define([
     });
 
     return videoModel;
-});
+  });
+
+/*
+  name: String,
+  displayName: String,
+  description: String,
+  location: [{ type: String }],
+  status: { type: String }, //?
+  size: Number,
+  type: String
+  */
