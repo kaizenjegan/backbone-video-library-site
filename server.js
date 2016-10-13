@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var video = require('./routes/video');
-var queue = require('./routes/queue');
+var torrents = require('./routes/torrents');
 var session = require('express-session');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
@@ -56,7 +56,7 @@ app.use(passport.session());
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/video', video);
-app.use('/queue', queue);
+app.use('/torrents', torrents);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

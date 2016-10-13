@@ -1,7 +1,7 @@
 define(['compiled_templates',
 		'views/showVideo',
 		'utils/ViewManager',
-		'collections/flixDb'], 
+		'collections/flixDb'],
 	function(Template, showVideo, vm, FlixDb){
 
 	var deleteVideo = Backbone.View.extend({
@@ -23,12 +23,16 @@ define(['compiled_templates',
 		delete: function(){
 			// var model = FlixDb.get(this.model.toJSON()._id);
 			// console.log(model);
-			this.modelTest.destroy({success: function(){
-					 // Backbone.sync();
-					 vm.router.navigate('home', {trigger: true});
-
-				}
-			})
+      this.modelTest.destroy({
+        success: function () {
+          // Backbone.sync();
+          vm.router.navigate('home', { trigger: true });
+        },
+        error: function (model, response) {
+          console.log(response);
+          console.log(model);
+        }
+      });
 
 		},
 		cancel: function(){

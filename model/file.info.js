@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var q = require('q');
 
 /*
   author: jegan matthews
@@ -21,7 +22,51 @@ var fileInfoSchema = mongoose.Schema({
   size: Number,
   type: String
 },
-{collection: 'fileinfo'});
+  { collection: 'fileinfo' });
 
-module.exports = mongoose.model('FileInfo', fileInfoSchema, 'fileinfo');
-// module.exports = fileInfoSchema;
+var FileInfoModel = mongoose.model('FileInfo', fileInfoSchema, 'fileinfo');
+// module.exports =  mongoose.model('FileInfo', fileInfoSchema, 'fileinfo');
+
+
+var FileInfo = function () {
+  this.get = function (page, limit) {
+    var defer = q.defer();
+
+    FileInfoModel.find({}, function (err, f) {
+      if (!err) {
+
+        defer.resolve(f);
+      } else {
+        console.log('error getting FileInfo');
+        defer.reject(null);
+      }
+    })
+      .skip((page - 1) * limit).limit(limit);
+
+    return defer.promise;
+  };
+
+  this.getById = function (id) {
+
+  }
+
+  this.add = function () {
+    var defer = q.defer();
+
+    return defer.promise;
+  }
+
+  this.update = function () {
+    var defer = q.defer();
+
+   return defer.promise;
+  }
+
+  this.remove = function () {
+    var defer = q.defer();
+
+    return defer.promise;
+  }
+};
+
+module.exports = FileInfo;
