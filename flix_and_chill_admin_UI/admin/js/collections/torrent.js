@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'models/queue', 'env/settings'],
+define(['jquery', 'backbone', 'models/torrent', 'env/settings'],
 	function($, Backbone, downloadModel, Settings){
 		'use strict'
 

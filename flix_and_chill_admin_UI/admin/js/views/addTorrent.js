@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'compiled_templates', 'models/queue', 'collections/queue', 'utils/ViewManager'], 
+define(['jquery', 'backbone', 'compiled_templates', 'models/torrent', 'collections/torrent', 'utils/ViewManager'],
 	function($, Backbone, Template, downloadModel, Q, vm){
 
 		var addTorrent = Backbone.View.extend({

@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'compiled_templates', 'collections/queue', 'models/queue'], 
+define(['jquery', 'backbone', 'compiled_templates', 'collections/torrent', 'models/torrent'],
 	function($, Backbone, Template, Downloads, DownloadModel){
 	var viewTorrent = Backbone.View.extend({
 		el: '#admin-body',
