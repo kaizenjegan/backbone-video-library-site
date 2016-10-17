@@ -12,43 +12,6 @@ router.get('/', config.isAuthenticated, config.isApproved, function (req, res, n
   var page = parseInt(req.query.page);
   var title = req.query.title;
 
-  // if(title)
-  // {
-  //     Video.find({title_lower: new RegExp(title.toLowerCase())} , function(err, v) {
-  //         if (err) {
-  //             res.send(err);
-  //         }
-
-  //         if (v) {
-  //             res.send(v);
-  //         }
-  //     });
-  // }else{
-  //     // Video.find({}, function(err, v) {
-  //     //     if (err) {
-  //     //         res.send(err);
-  //     //     }
-
-  //     //     if (v) {
-  //     //         res.send(v);
-  //     //     }
-  //     // }).skip((page - 1) * limit).limit(limit);
-  //   FileInfo.find({}, function (err, f) {
-  //     if (err) {
-  //       res.send(err);
-  //     }
-
-  //     if (f) {
-  //       res.send(f);
-  //     }
-  //   }).skip((page - 1) * limit).limit(limit);
-  // }
-
-  // var callback = function(err, v){
-
-  // }
-
-
   FileInfo.get(page, limit).then(function (data) {
     res.send(data);
   }, function (err) {
