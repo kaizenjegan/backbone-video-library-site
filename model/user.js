@@ -12,6 +12,8 @@ var usersSchema = new mongoose.Schema({
   isApproved: { type: Boolean, default: false }
 });
 
+//add some contraints
+
 var userModel = mongoose.model('User', usersSchema);
 
 var User = function () {

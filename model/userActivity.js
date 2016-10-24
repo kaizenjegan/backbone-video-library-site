@@ -7,4 +7,7 @@ var activitySchema = new mongoose.Schema({
 	activityDate: {type: Date, default: Date.now}
 });
 
-module.exports = activitySchema;
+// module.exports = activitySchema;
+
+
+module.exports = model.model('Activity', activitySchema);

@@ -6,7 +6,7 @@ define(['backbone', 'env/settings'], function(Backbone, Settings){
 		defaults: {
 			// '_id': '',
 			'magnetUri': '',
-			'name': 'Untitled Unmastered',
+			'name': 'Queued',
 			'infoHash': '',
 			'status': '',
 			'added_on': '',

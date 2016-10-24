@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var videoSchema = require('../model/video');
-var Video = mongoose.model('Video', videoSchema);
 var config = require('../env/config');
 var FileInfoModel = require('../model/file.info.js');
 var FileInfo = new FileInfoModel();

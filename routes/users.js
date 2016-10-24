@@ -19,7 +19,9 @@ passport.use(new LocalStrategy(
 
 /* GET users listing. */
 router.get('/me', env.isAuthenticated, function (req, res, next) {
+  console.log(req.user.username + " is requesting me");
   user.getById(req.user._id).then(function (u) {
+    console.log('got user ' + req.user._id)
     res.status(200).send(u);
   }, function (err) {
     res.status(400).send();
@@ -27,6 +29,7 @@ router.get('/me', env.isAuthenticated, function (req, res, next) {
 });
 
 router.get('/logout', env.isAuthenticated, function (req, res, next) {
+  console.log(req.user.username + " is requesting logout");
   req.logout();
 
   res.redirect('/');

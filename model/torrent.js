@@ -13,6 +13,10 @@ var torrentSchema = mongoose.Schema({
   action: { type: String, default: 'start' }
 });
 
+//add constraint to prevent duplicate magnetUri
+//add constraint to prevent empty magnetUri
+//add constraint to regex magnetURI to the
+
 var Torrent = mongoose.model('Torrent', torrentSchema);
 
 var TorrentModel = function () {
