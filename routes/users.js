@@ -36,14 +36,19 @@ router.get('/logout', env.isAuthenticated, function (req, res, next) {
 });
 
 router.get('/', env.isAuthorized, function (req, res, next) {
+  console.log(req.user.username + " is requesting all users");
   user.get().then(function (u) {
+    console.log('successfully got users');
     res.status(200).send(u);
   }, function (err) {
+    console.log('error getting users');
+    console.log(err);
     res.status(400).send();
   });
 });
 
 router.post('/signup', function (req, res, next) {
+  console.log(req.body.username + " signing up");
   var displayName = req.body.displayName;
   var username = req.body.username;
   var password = req.body.password;
@@ -53,8 +58,11 @@ router.post('/signup', function (req, res, next) {
     password: password,
     displayName: displayName
   }).then(function (u) {
+    console.log(req.body.username + " success signing up");
     res.status(200).send(u);
   }, function (err) {
+    console.log(req.body.username + " error signing up");
+    console.log(err);
     res.status(400).send();
   });
 });

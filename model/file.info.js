@@ -25,8 +25,6 @@ var fileInfoSchema = mongoose.Schema({
   { collection: 'fileinfo' });
 
 var FileInfoModel = mongoose.model('FileInfo', fileInfoSchema, 'fileinfo');
-// module.exports =  mongoose.model('FileInfo', fileInfoSchema, 'fileinfo');
-
 
 var FileInfo = function () {
   this.get = function (page, limit) {

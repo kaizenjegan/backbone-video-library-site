@@ -3,7 +3,7 @@ var fileInfoSchema = require('./file.info.js')
 var q = require('q');
 
 var torrentSchema = mongoose.Schema({
-  magnetUri: String,
+  magnetUri: {type: String, require: true, unique: true},
   infoHash: String,
   _fileinfo: { type: mongoose.Schema.ObjectId, ref: 'FileInfo' },
   name: String,
@@ -16,6 +16,21 @@ var torrentSchema = mongoose.Schema({
 //add constraint to prevent duplicate magnetUri
 //add constraint to prevent empty magnetUri
 //add constraint to regex magnetURI to the
+
+torrentSchema.pre("save",function(next, done) {
+    var self = this;
+    mongoose.models["Torrent"].findOne({email : self.email},function(err, results) {
+        if(err) {
+            done(err);
+        } else if(results) { //there was a result found, so the email address exists
+            self.invalidate("email","email must be unique");
+            done(new Error("email must be unique"));
+        } else {
+            done();
+        }
+    });
+    next();
+});
 
 var Torrent = mongoose.model('Torrent', torrentSchema);
 
