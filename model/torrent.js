@@ -103,7 +103,7 @@ var TorrentModel = function () {
 
     Torrent.remove({ _id: id }, function (err, d) {
       if (!err) {
-        defer.resolve(d);
+        defer.resolve();
       } else {
         defer.reject(null);
       }

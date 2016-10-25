@@ -52,8 +52,8 @@ router.put('/', env.isAuthorized, function (req, res, next) {
 router.delete('/:id', env.isAuthorized, function (req, res, next) {
   console.log(req.user.username + " is deleting torrent " + req.params._id);
 
-  Torrent.remove(req.params._id).then(function (data) {
-    res.send(data);
+  Torrent.remove(req.params.id).then(function (data) {
+    res.send('successfully deleted ' + d.magnetUri);
   }, function (err) {
     res.send(err);
   });
