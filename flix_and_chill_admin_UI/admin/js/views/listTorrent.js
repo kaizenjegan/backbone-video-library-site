@@ -9,8 +9,8 @@ define(['jquery', 'backbone', 'compiled_templates', 'collections/torrent', 'mode
 		},
 		initialize: function(){
 			Downloads.fetch();
-			// this.listenTo(Downloads, 'add', this.render);
-			// this.listenTo(Downloads, 'change', this.render);
+			this.listenTo(Downloads, 'add', this.render);
+			this.listenTo(Downloads, 'change', this.render);
 			this.listenTo(Downloads, 'destroy', this.render);
 			this.render();
 		},
