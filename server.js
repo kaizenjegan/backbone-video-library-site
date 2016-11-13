@@ -16,13 +16,6 @@ var mongoose = require('mongoose');
 var app = express();
 var env;
 var config = env = require('./env/config');
-var redis = require('redis');
-var client = redis.createClient();
-
-
-client.on('connect', function() {
-    console.log('connected');
-});
 
 mongoose.connect(config.mongooseURL);
 mongoose.set('debug', true);

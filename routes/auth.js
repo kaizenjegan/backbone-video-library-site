@@ -7,8 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var env = require('../env/config');
-var userSchema = require('../model/user');
-var User = mongoose.model('User', userSchema);
+var User = require('../model/user');
 
 //Implement passport
 passport.serializeUser(function(user, done) {

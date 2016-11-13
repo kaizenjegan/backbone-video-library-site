@@ -4,8 +4,6 @@ var env = require('../env/config');
 var mongoose = require('mongoose');
 var TorrenModel = require('../model/torrent');
 var Torrent = new TorrenModel();
-var redis = require('redis');
-var client = redis.createClient();
 
 
 router.get('/', env.isAuthorized, function (req, res, next) {
