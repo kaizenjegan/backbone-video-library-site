@@ -7,9 +7,8 @@ define([
     'env/settings'
 ], function (_, Backbone, userModel, Settings) {
     'use strict';
-    var url = "http://localhost:3000/"
     var users = Backbone.Collection.extend({
-        url: Settings.flix_api_url +  '/users',
+        url: Settings.flix_api_url,
         model: userModel,
         current: {},
         login: function(usr, pwd)
@@ -17,7 +16,7 @@ define([
         	var self = this;
 
         	$.ajax({
-        		url: url + 'users/login',
+        		url: this.url + '/users/login',
         		type: 'POST',
         		contentType: 'application/json',
         		data: JSON.stringify({username: usr, password: pwd}),
@@ -35,7 +34,7 @@ define([
         	var self = this;
         	
         	$.ajax({
-        		url: url + 'users/signup',
+        		url: this.url + '/users/signup',
         		type: 'POST',
         		contentType: 'application/json',
         		data: JSON.stringify({displayName: displayName, username: usr, password: pwd}),
