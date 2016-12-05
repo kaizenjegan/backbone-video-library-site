@@ -23,9 +23,13 @@ var client = redis.createClient();
 client.on('connect', function() {
     console.log('connected');
 });
-
-mongoose.connect(config.mongooseURL);
-mongoose.set('debug', true);
+console.log(config.mongooseURL);
+var options = {
+	server: {poolSize: 5}
+};
+options.server.socketOptions = { keepAlive: 120 };
+mongoose.connect(config.mongooseURL, options);
+//mongoose.set('debug', true);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

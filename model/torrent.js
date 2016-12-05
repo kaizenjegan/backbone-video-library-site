@@ -19,7 +19,7 @@ var torrentSchema = mongoose.Schema({
 
 torrentSchema.pre("save",function(next, done) {
     var self = this;
-    mongoose.models["Torrent"].findOne({email : self.email},function(err, results) {
+    mongoose.models["Torrent"].findOne({magnetUri : self.email},function(err, results) {
         if(err) {
             done(err);
         } else if(results) { //there was a result found, so the email address exists
