@@ -2,7 +2,7 @@
 1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
 2 info using npm@3.10.5
 3 info using node@v4.4.7
-4 verbose stack Error: Invalid version: "0.8"
+4 verbose stack Error: Invalid version: "0.6"
 4 verbose stack     at Object.module.exports.fixVersionField (/usr/local/lib/node_modules/npm/node_modules/normalize-package-data/lib/fixer.js:191:13)
 4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/normalize-package-data/lib/normalize.js:32:38
 4 verbose stack     at Array.forEach (native)
@@ -17,7 +17,7 @@
 7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
 8 error node v4.4.7
 9 error npm  v3.10.5
-10 error Invalid version: "0.8"
+10 error Invalid version: "0.6"
 11 error If you need help, you may report this error at:
 11 error     <https://github.com/npm/npm/issues>
 12 verbose exit [ 1, true ]
