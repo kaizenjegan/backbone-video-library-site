@@ -12,7 +12,7 @@ define([
         template: Templates['logged-out.hbs'],
         events: {
           'click #login': 'toggleForms',
-          'click '
+          // 'click #signup': ''
         },
         initialize: function() {
             this.render();
