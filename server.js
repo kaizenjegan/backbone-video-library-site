@@ -16,7 +16,7 @@ var mongoose = require('mongoose');
 var app = express();
 var env;
 var config = env = require('./env/config');
-var redis = require('redis');
+// var redis = require('redis');
 
 console.log(config.mongooseURL);
 var options = {
