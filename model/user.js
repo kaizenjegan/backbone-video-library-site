@@ -80,7 +80,7 @@ var User = function () {
     return defer.promise;
   }
 
-  this.update = function () {
+  this.update = function (id, body) {
     var defer = q.defer();
 
     return defer.promise;

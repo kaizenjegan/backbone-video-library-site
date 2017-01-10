@@ -77,6 +77,9 @@ router.put("/:id", env.isAuthorized, function (req, res, next) {
   // }, function (err) {
 
   // });
+  User.update(req.params.id, req.body).then(function (data) {
+    res.send()
+  })
 });
 
 router.post('/login', passport.authenticate('local'), function (req, res) {
