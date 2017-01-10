@@ -10,6 +10,10 @@ define([
     var NotLoggedInView = Backbone.View.extend({
         el: '#video-body',
         template: Templates['logged-out.hbs'],
+        events: {
+          'click #login': 'toggleForms',
+          'click '
+        },
         initialize: function() {
             this.render();
         },
