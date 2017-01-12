@@ -2,8 +2,8 @@
 video server: {{videoServer}}
 {{#each video.location}}
  <video id="flix_video" controls  class="video-js vjs-default-skin" preload="auto">
-    <source src="{{../videoServer}}/{{this}}" type="video/mp4">
-    <source src="{{../videoServer}}/{{this}}" type="video/ogg">
+    <source src="{{this}}" type="video/mp4">
+    <source src="{{this}}" type="video/ogg">
     <p class="vjs-no-js">To view this video please enable JavaScript </p>
   </video>
   <p><strong>Description</strong></p>
