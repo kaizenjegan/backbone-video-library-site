@@ -1,5 +1,5 @@
 define([], function(){
 	return {
-		flix_api_url: 'http://flixandchill.herokuapp.com'
+		flix_api_url: 'http://localhost:3000'
 	}
 });

@@ -12,7 +12,7 @@ define([
 
     var videoView = Backbone.View.extend({
         el: '#video-body',
-        template: Template['watch-video.hbs'],
+        template: Template['show-video.hbs'],
         events: {
             'click #delete': 'delete'
         },
