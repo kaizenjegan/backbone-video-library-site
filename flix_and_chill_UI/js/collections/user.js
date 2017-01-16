@@ -24,7 +24,7 @@ define([
         			self.current = new userModel(userModel);
                     self.trigger('logged_in');
         		},
-        		error: function(a, b, c){
+        		error: function(jqXHR, textStatus, errorThrown){
         			self.trigger('not_logged_in');
         		}
         	});
@@ -32,7 +32,7 @@ define([
         signup: function(displayName, usr, pwd, confirmPwd)
         {
         	var self = this;
-        	
+
         	$.ajax({
         		url: 'users/signup',
         		type: 'POST',
@@ -53,8 +53,14 @@ define([
         	var self = this;
         	this.fetch({
         		success: function(model) {
-                    self.current = model.toJSON()[0];
-        			self.trigger('logged_in');
+              self.current = model.toJSON()[0];
+
+              if (self.current.isApproved) {
+                self.trigger('logged_in');
+              } else {
+                self.trigger('not_approved');
+              }
+
         		},
         		error: function()
         		{
