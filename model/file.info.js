@@ -17,10 +17,14 @@ var fileInfoSchema = mongoose.Schema({
   name: String,
   displayName: String,
   description: String,
-  location: [{ type: String }],
+  location: [{
+    name: String,
+    link: String
+  }],
   status: { type: String }, //?
   size: Number,
-  type: String
+  type: String,
+  createdDate: {type: Date, default: Date.now}
 },
   { collection: 'fileinfo' });
 

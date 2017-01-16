@@ -1,13 +1,13 @@
 <h2>{{video.title}}</h2>
-video server: {{videoServer}}
+{{!--video server: {{videoServer}}--}}
 {{#each video.location}}
  <video id="flix_video" controls  class="video-js vjs-default-skin" preload="auto">
-    <source src="{{this}}" type="video/mp4">
-    <source src="{{this}}" type="video/ogg">
+    <source src="{{link}}" type="video/mp4">
+    <source src="{{link}}" type="video/ogg">
     <p class="vjs-no-js">To view this video please enable JavaScript </p>
   </video>
-  <p><strong>Description</strong></p>
-  <p> {{video.description}} </p>
+  <p><strong>title</strong></p>
+  <p> {{name}} </p>
 {{/each}}
 
  {{#if isAdmin}}
