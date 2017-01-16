@@ -60,7 +60,6 @@ define([
               } else {
                 self.trigger('not_approved');
               }
-
         		},
         		error: function()
         		{
