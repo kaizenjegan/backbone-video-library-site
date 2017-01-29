@@ -9,7 +9,7 @@ var usersSchema = new mongoose.Schema({
   createdBy: Number,
   createdDateTime: { type: Date, default: Date.now },
   role: { type: String, default: 'normal' },
-  isApproved: { type: Boolean, default: false }
+  isApproved: { type: Boolean, default: true }
 });
 
 //add some contraints
